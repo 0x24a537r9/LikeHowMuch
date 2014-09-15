@@ -1,1 +1,64 @@
-test 2
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="units.js"></script>
+    <title>LikeThisMuch.com</title>
+  </head>
+  <body>
+    <input class="query-input" type="text" name="query"></input>
+    <br>
+    is like
+    <button class="query-button">this much</button>
+  </body>
+  <script>
+    $(function() {
+      $('.query-button').click(handleQuery);
+      $(document).keydown(function(e) { if (e.which == 13) handleQuery(); });
+    });
+
+
+    function handleQuery() {
+      $('.query-input, .query-button').prop('disabled', true);
+      var convertedQuery = parseAndConvert($('.query-input').val());
+      console.info(convertedQuery);
+      $('.query-input, .query-button').prop('disabled', false);
+    }
+
+
+    function parseAndConvert(query) {
+      // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
+      var matches = /^([-+]?[0-9,]*\.?[0-9,]+(?:[eE][-+]?[0-9]+)?)\s*(.*?)\s*$/.exec(query);
+      if (!matches) {
+        throw new Error('Unparseable query.');
+      }
+
+      var initialQuantity = parseFloat(matches[1]);
+      if (isNaN(initialQuantity)) {
+        throw new Error('Unparseable quantity.'); 
+      }
+
+      var initialUnitString = matches[2].replace(/[*.^\s\u00B7]+/g, '');
+      var initialUnit = UNITS[initialUnitString] || UNITS[initialUnitString.toLowerCase()];
+      if (!initialUnit) {
+        throw new Error('Unrecognized unit ' + initialUnitString);
+      }
+
+      console.debug(initialQuantity + ' ' + initialUnitString);
+
+      var rootQuanitity = initialQuantity;
+      var rootUnit = initialUnit;
+      do {
+        if (!initialUnit.shortName && rootUnit.shortName) {
+          initialUnit = rootUnit;
+        }
+        rootQuanitity *= rootUnit.multiplier || 1;
+        rootUnit = UNITS[rootUnit.unit];
+
+        console.debug(' = ' + rootQuanitity + ' ' + rootUnit.shortName);
+      } while (rootUnit.multiplier != 1);
+
+      return [initialQuantity, initialUnit, rootQuanitity, rootUnit];
+    }
+  </script>
+</html>
