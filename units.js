@@ -78,6 +78,7 @@ defineSiPrefix('Y', 'Y', 'yotta', 1e24);
 
 
 var UNITS = {};
+// Length.
 defineUnit('m', 'meter', 'meters', 'm', 1);
 defineSiPrefixedUnits('m');
 defineUnit('metres', 'metre', 'metres', 'm', 1);
@@ -97,3 +98,27 @@ defineUnit('ly', 'light year', 'light years', 'm', 9460730472580800);
 defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['angstrom', 'angstroms']);
 defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planck length', 'planck lengths']);
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
+// Time.
+defineUnit('s', 'second', 'seconds', 's', 1);
+defineSiPrefixedUnits('s');
+defineUnit('min', 'minute', 'minutes', 's', 60);
+defineUnit('hr', 'hour', 'hours', 'min', 60);
+defineUnit('d', 'day', 'days', 'hr', 24);
+defineUnit('wk', 'week', 'weeks', 'd', 7);
+defineUnit('mo', 'month', 'months', 'd', 30);
+defineUnit('fortnights', 'fortnight', 'fortnights', 'd', 14);
+defineUnit('y', 'year', 'years', 'd', 365.242, ['yr']);
+defineUnit('decades', 'decade', 'decades', 'y', 10);
+defineUnit('centuries', 'century', 'centuries', 'y', 100);
+defineUnit('millenia', 'millenium', 'millenia', 'y', 1000);
+defineUnit('epochs', 'epoch', 'epochs', 'y', 1e6);
+// Mass/Weight.
+defineUnit('g', 'gram', 'grams', 'g', 1);
+defineSiPrefixedUnits('g');
+defineUnit('lb', 'pound', 'pounds', 'g', 453.592);
+defineUnit('oz', 'ounce', 'ounces', 'g', 28.3495);
+defineUnit('ozt', 'troy ounce', 'troy ounces', 'g', 31.1034768);
+defineUnit('ct', 'carat', 'carats', 'g', 0.2);
+defineUnit('t', 'tonne', 'tonnes', 'kg', 1000, ['metric ton', 'metric tons']);
+defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
+defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
