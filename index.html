@@ -8,9 +8,14 @@
   </head>
   <body>
     <input class="query-input" type="text" name="query"></input>
-    <br>
+    <div class="interpretation">
+      Interpreted as: <span class="quantity"></span> <span class="unit"></span>
+    </div>
     is like
     <button class="query-button">this much</button>
+    <div class="result">
+      <span class="quantity"></span> <span class="unit"></span>
+    </div>
   </body>
   <script>
     $(function() {
@@ -21,13 +26,24 @@
 
     function handleQuery() {
       $('.query-input, .query-button').prop('disabled', true);
-      var convertedQuery = parseAndConvert($('.query-input').val());
-      console.info(convertedQuery);
+      
+      var standardizedQuery = parseAndStandardize($('.query-input').val());
+
+      $('.interpretation .quantity').text(standardizedQuery[0]);
+      $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
+                                      standardizedQuery[1].singularLongName :
+                                      standardizedQuery[1].pluralLongName);
+
+      var convertedQuery = convert.apply(null, standardizedQuery);
+
+      $('.result .quantity').text(convertedQuery[0]);
+      $('.result .unit').text(convertedQuery[1]);
+      
       $('.query-input, .query-button').prop('disabled', false);
     }
 
 
-    function parseAndConvert(query) {
+    function parseAndStandardize(query) {
       // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
       var matches = /^([-+]?[0-9,]*\.?[0-9,]+(?:[eE][-+]?[0-9]+)?)\s*(.*?)\s*$/.exec(query);
       if (!matches) {
@@ -60,6 +76,19 @@
       } while (rootUnit.multiplier != 1);
 
       return [initialQuantity, initialUnit, rootQuanitity, rootUnit];
+    }
+
+
+    function convert(initialQuantity, initialUnit, rootQuanitity, rootUnit) {
+      var quantities = QUANTITIES[rootUnit.shortName];
+      for (var i = quantities.length - 1; i >= 0; --i) {
+        if (quantities[i].quantity <= rootQuanitity || i == 0) {
+          return [
+            rootQuanitity / quantities[i].quantity,
+            quantities[i].description
+          ];
+        }
+      }
     }
   </script>
 </html>

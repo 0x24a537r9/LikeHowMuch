@@ -1,5 +1,18 @@
-function defineQuantity(quantity, unit, description) {
-  // TODO
+function defineQuantity(quantity, unitShortName, description) {
+  var rootQuanitity = quantity;
+  var rootUnit = UNITS[unitShortName];
+  do {
+    rootQuanitity *= rootUnit.multiplier || 1;
+    rootUnit = UNITS[rootUnit.unit];
+  } while (rootUnit.multiplier != 1);
+
+  if (!QUANTITIES[rootUnit.shortName]) {
+    QUANTITIES[rootUnit.shortName] = [];
+  }
+  QUANTITIES[rootUnit.shortName].push({
+    quantity: rootQuanitity,
+    description: description
+  });
 }
 
 
@@ -43,7 +56,7 @@ defineQuantity(1, 'ns', 'machine cycles by a 1 GHz microprocessor');
 defineQuantity(1.0167, 'ns', 'light feet');
 defineQuantity(1, 'ms', 'sequential human nueral firings');
 defineQuantity(350, 'ms', 'blinks of an eye');
-defineQuantity(500000, 'times the age of modern humans');
+defineQuantity(500000, 'y', 'times the age of modern humans');
 defineQuantity(65000000, 'y', 'times the time dinosaurs have been extinct');
 defineQuantity(4000000000, 'y', 'times the age of life on Earth');
 defineQuantity(143, 'Ps', 'times the age of Earth');
@@ -51,8 +64,8 @@ defineQuantity(144, 'Ps', 'times the age of the Solar System');
 defineQuantity(430, 'Ps', 'times the age of the Universe');
 // Mass/Weight.
 defineQuantity(9.11e-31, 'kg', 'electrons');
-defineQuantity(1.673e-27, 'kg', 'protons');
-defineQuantity(1.674e-27, 'kg', 'hydrogen atoms');
+defineQuantity(1.673e-27, 'kg', 'protons');
+defineQuantity(1.674e-27, 'kg', 'hydrogen atoms');
 defineQuantity(3e-26, 'kg', 'water molecules');
 defineQuantity(8e-26, 'kg', 'titanium atoms');
 defineQuantity(3.2e-25, 'kg', 'caffeine molecules');
@@ -62,7 +75,7 @@ defineQuantity(6e-15, 'kg', 'human DNA molecules');
 defineQuantity(2.2e-14, 'kg', 'human sperm cells');
 defineQuantity(1e-12, 'kg', 'average human cells');
 defineQuantity(1.67e-9, 'kg', 'grains of sand');
-defineQuantity(7e-8, 'kg', 'human eyebrow hairs');
+defineQuantity(7e-8, 'kg', 'human eyebrow hairs');
 defineQuantity(2.5e-7, 'kg', 'fruit flies');
 defineQuantity(2e-5, 'kg', 'houseflies');
 defineQuantity(0.52, 'g', 'raisins');
@@ -70,7 +83,7 @@ defineQuantity(1, 'g', 'US dollar bills');
 defineQuantity(1.4, 'g', 'standard paperclips');
 defineQuantity(30, 'g', 'mice (the furry kind)');
 defineQuantity(6.4, 'oz', 'apples');
-defineQuantity(430, 'g', 'soccer balls (or "footballs" if live outside the U.S.)';
+defineQuantity(430, 'g', 'soccer balls (or "footballs" if live outside the U.S.)');
 defineQuantity(2, 'kg', 'Chihuahuas');
 defineQuantity(3.25, 'kg', 'newborn babies');
 defineQuantity(4.5, 'kg', 'cats');
@@ -86,3 +99,11 @@ defineQuantity(7.8e6, 'kg', 'Virginia-class nuclear submarines');
 defineQuantity(5.2e7, 'kg', 'RMS Titanics');
 defineQuantity(6e9, 'kg', 'Great Pyramids of Giza');
 defineQuantity(4e11, 'kg', 'times the total biomass of the human population');
+
+
+// Sort the quantities.
+for (var unit in QUANTITIES) {
+  QUANTITIES[unit].sort(function(a, b) {
+    return a.quantity - b.quantity;
+  });
+}
