@@ -24,7 +24,7 @@ defineKnownQuantity(90, 'nm', 'times the width of the HIV virus');
 defineKnownQuantity(7, 'um', 'times the diameter of a red blood cell');
 defineKnownQuantity(100, 'um', 'times the width of a human hair');
 defineKnownQuantity(0.004, 'in', 'dollars in stacked $1 bills');
-defineKnownQuantity(0.3, 'mm', 'grains of sand long');
+defineKnownQuantity(0.3, 'mm', 'grains of sand in a line');
 defineKnownQuantity(0.4, 'mm', 'times the thickness of a fingernail');
 defineKnownQuantity(4.267, 'cm', 'golf balls stacked on top of each other');
 defineKnownQuantity(1.7, 'm', 'times the average height of a human');
@@ -53,7 +53,7 @@ defineKnownQuantity(92000000000, 'ly', 'times the diameter of the observable uni
 // Time.
 defineKnownQuantity(12, 'as', 'times the shortest measured period of time');
 defineKnownQuantity(1, 'ns', 'machine cycles by a 1 GHz microprocessor');
-defineKnownQuantity(1.0167, 'ns', 'light feet');
+defineKnownQuantity(1.0167, 'ns', 'times the amount of time it takes light to travel a foot');
 defineKnownQuantity(1, 'ms', 'sequential human nueral firings');
 defineKnownQuantity(350, 'ms', 'blinks of an eye');
 defineKnownQuantity(500000, 'y', 'times the age of modern humans');
