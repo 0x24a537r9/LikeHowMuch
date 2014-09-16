@@ -26,6 +26,8 @@
 
 
     function handleQuery() {
+      // TODO: Handle errors appropriately.
+
       $('.query-input, .query-button').prop('disabled', true);
       
       var standardizedQuery = parseAndStandardize($('.query-input').val());
