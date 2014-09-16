@@ -51,8 +51,8 @@ defineQuantity(144, 'Ps', 'times the age of the Solar System');
 defineQuantity(430, 'Ps', 'times the age of the Universe');
 // Mass/Weight.
 defineQuantity(9.11e-31, 'kg', 'electrons');
-defineQuantity(1.673e−27, 'kg', 'protons');
-defineQuantity(1.674e−27, 'kg', 'hydrogen atoms');
+defineQuantity(1.673e-27, 'kg', 'protons');
+defineQuantity(1.674e-27, 'kg', 'hydrogen atoms');
 defineQuantity(3e-26, 'kg', 'water molecules');
 defineQuantity(8e-26, 'kg', 'titanium atoms');
 defineQuantity(3.2e-25, 'kg', 'caffeine molecules');
