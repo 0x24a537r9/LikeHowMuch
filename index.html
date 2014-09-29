@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>LikeThisMuch.com</title>
+    <link href="reset.css" rel="stylesheet" type="text/css">
+    <link href="base.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="textFit.min.js"></script>
     <script src="handlebars-v1.3.0.js"></script>
     <script src="units.js"></script>
     <script src="quantities.js"></script>
-    <title>LikeThisMuch.com</title>
+    <script src="banner.js"></script>
     <script id="result-template" type="text/x-handlebars-template">
       <li class="result">
         <span class="description">{{ description.[0] }}</span><!--
@@ -22,6 +26,8 @@
     is like
     <button class="query-button">this much</button>
     <ul class="results"></ul>
+    <div class="banner"><div class="banner-text"></div></div>
+    <div class="banner"><div class="banner-text"></div></div>
   </body>
   <script>
     var resultTemplate;
@@ -36,18 +42,25 @@
 
 
     function handleQuery() {
-      // TODO: Handle errors appropriately.
+      var query = $('.query-input').val().trim();
+      if (!query) {
+        return;
+      }
 
       $('.query-input, .query-button').prop('disabled', true);
       
-      var standardizedQuery = parseAndStandardize($('.query-input').val());
+      try {
+        var standardizedQuery = parseAndStandardize(query);
 
-      $('.interpretation .quantity').text(standardizedQuery[0]);
-      $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
-                                      standardizedQuery[1].singularLongName :
-                                      standardizedQuery[1].pluralLongName);
+        $('.interpretation .quantity').text(standardizedQuery[0]);
+        $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
+                                        standardizedQuery[1].singularLongName :
+                                        standardizedQuery[1].pluralLongName);
 
-      convertAndRender.apply(null, standardizedQuery);
+        convertAndRender.apply(null, standardizedQuery);
+      } catch (e) {
+        showBannerMessage(e.message);
+      }
       
       $('.query-input, .query-button').prop('disabled', false);
     }
@@ -57,18 +70,22 @@
       // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
       var matches = /^([-+]?[0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)\s*(.*?)\s*$/.exec(query);
       if (!matches) {
-        throw new Error('Unparseable query.');
+        throw new Error('Huh. I don\'t recognize that measurement...');
       }
 
       var initialQuantity = parseFloat(matches[1].replace(/[,\s]/g, ''));
       if (isNaN(initialQuantity)) {
-        throw new Error('Unparseable quantity.'); 
+        throw new Error('Uh... are you sure that\'s a real number?'); 
       }
 
       var initialUnitString = matches[2].replace(/[*.^\s\u00B7]+/g, '');
+      if (!initialUnitString) {
+        throw new Error('I\'m gonna need a unit of measurement (e.g. "meters").');
+      }
+
       var initialUnit = UNITS[initialUnitString] || UNITS[initialUnitString.toLowerCase()];
       if (!initialUnit) {
-        throw new Error('Unrecognized unit ' + initialUnitString);
+        throw new Error('Sorry. I don\'t know what "' + matches[2] + '" are :(');
       }
 
       console.debug(initialQuantity + ' ' + initialUnitString);
