@@ -8,8 +8,9 @@
     <title>LikeThisMuch.com</title>
     <script id="result-template" type="text/x-handlebars-template">
       <li class="result">
-        <span class="quantity">{{ quantity }}</span>
-        <span class="description">{{ description }}</span>
+        <span class="description">{{ description.[0] }}</span><!--
+     --><span class="quantity">{{ quantity }}</span><!--
+     --><span class="description">{{ description.[1] }}</span>
       </li>
     </script>
   </head>
@@ -96,7 +97,7 @@
       for (var i = 0; i < relevantKnownQuantities.length; ++i) {
         $results.append(resultTemplate({
           quantity: rootQuanitity / relevantKnownQuantities[i].quantity,
-          description: relevantKnownQuantities[i].description
+          description: relevantKnownQuantities[i].description.split('|')
         }));
       }
     }
