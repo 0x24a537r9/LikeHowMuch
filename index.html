@@ -5,6 +5,7 @@
     <link href="reset.css" rel="stylesheet" type="text/css">
     <link href="base.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="underscore.js"></script>
     <script src="textFit.min.js"></script>
     <script src="handlebars-v1.3.0.js"></script>
     <script src="units.js"></script>
@@ -52,7 +53,7 @@
       try {
         var standardizedQuery = parseAndStandardize(query);
 
-        $('.interpretation .quantity').text(standardizedQuery[0]);
+        $('.interpretation .quantity').text(formatQuantity(standardizedQuery[0]));
         $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
                                         standardizedQuery[1].singularLongName :
                                         standardizedQuery[1].pluralLongName);
@@ -113,10 +114,30 @@
       $results.html('');
       for (var i = 0; i < relevantKnownQuantities.length; ++i) {
         $results.append(resultTemplate({
-          quantity: rootQuanitity / relevantKnownQuantities[i].quantity,
+          quantity: formatQuantity(rootQuanitity / relevantKnownQuantities[i].quantity),
           description: relevantKnownQuantities[i].description.split('|')
         }));
       }
+    }
+
+
+    function formatQuantity(n) {
+      var FRACTION_DIGITS = 4;
+      var nParts = n.toExponential(FRACTION_DIGITS).split('e');
+      var baseStr = nParts[0].replace('.', '');
+      var exp = parseInt(nParts[1]);
+
+      var intStr = baseStr;
+      intStr = intStr.substr(0, exp + 1);  // Remove fractional digits.
+      intStr += _.times(exp - FRACTION_DIGITS, function() { return '0'; }).join('');  // Append 0s.
+      intStr = intStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');  // Insert commas.
+      intStr = intStr || '0';  // Make 0 if empty.
+
+      var fracStr = baseStr;
+      fracStr = fracStr.substr(Math.max(0, exp + 1));  // Remove integral digits.
+      fracStr = _.times(-exp - 1, function() { return '0'; }).join('') + fracStr;  // Prepend 0s.
+
+      return (intStr + '.' + fracStr).replace(/\.?0*$/, '');
     }
   </script>
 </html>
