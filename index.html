@@ -48,12 +48,12 @@
 
     function parseAndStandardize(query) {
       // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
-      var matches = /^([-+]?[0-9,]*\.?[0-9,]+(?:[eE][-+]?[0-9]+)?)\s*(.*?)\s*$/.exec(query);
+      var matches = /^([-+]?[0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)\s*(.*?)\s*$/.exec(query);
       if (!matches) {
         throw new Error('Unparseable query.');
       }
 
-      var initialQuantity = parseFloat(matches[1]);
+      var initialQuantity = parseFloat(matches[1].replace(/[,\s]/g, ''));
       if (isNaN(initialQuantity)) {
         throw new Error('Unparseable quantity.'); 
       }
