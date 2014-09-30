@@ -20,15 +20,24 @@
     </script>
   </head>
   <body>
-    <input class="query-input" type="text" name="query"></input>
-    <div class="interpretation">
-      Interpreted as: <span class="quantity"></span> <span class="unit"></span>
+    <div class="content">
+      <h1 class="how-much-is-caption">
+        How much is
+      </h1>
+      <div class="query-form">      
+        <input class="query-input" type="text" name="query"></input>
+        <button class="query-button">=</button>  
+      </div>
+      <div class="interpretation">
+        Interpreted as: <span class="quantity"></span> <span class="unit"></span>
+      </div>
+      <h1 class="is-like-caption">
+        is like
+      </h1>
+      <ul class="results"></ul>
+      <div class="banner"><div class="banner-text"></div></div>
+      <div class="banner"><div class="banner-text"></div></div>
     </div>
-    is like
-    <button class="query-button">this much</button>
-    <ul class="results"></ul>
-    <div class="banner"><div class="banner-text"></div></div>
-    <div class="banner"><div class="banner-text"></div></div>
   </body>
   <script>
     var resultTemplate;
@@ -118,6 +127,8 @@
           description: relevantKnownQuantities[i].description.split('|')
         }));
       }
+
+      $('.content').addClass('show-results');
     }
 
 
