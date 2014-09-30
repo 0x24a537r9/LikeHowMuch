@@ -110,7 +110,7 @@
         }
 
         console.debug(' = ' + rootQuanitity + ' ' + rootUnit.shortName);
-      } while (rootUnit.multiplier != 1);
+      } while (!isRootUnit(rootUnit));
 
       return [initialQuantity, initialUnit, rootQuanitity, rootUnit];
     }

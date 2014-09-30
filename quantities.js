@@ -4,7 +4,7 @@ function defineKnownQuantity(quantity, unitShortName, description) {
   do {
     rootQuanitity *= rootUnit.multiplier || 1;
     rootUnit = UNITS[rootUnit.unit];
-  } while (rootUnit.multiplier != 1);
+  } while (!isRootUnit(rootUnit));
 
   if (!KNOWN_QUANTITIES[rootUnit.shortName]) {
     KNOWN_QUANTITIES[rootUnit.shortName] = [];

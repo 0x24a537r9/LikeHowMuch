@@ -54,6 +54,11 @@ function defineSiPrefixedUnits(shortName, opt_prefixes) {
 }
 
 
+function isRootUnit(unit) {
+  return unit.shortName == unit.unit;
+}
+
+
 var SI_PREFIXES = {};
 defineSiPrefix('y', 'y', 'yocto', 1e-24);
 defineSiPrefix('z', 'z', 'zepto', 1e-21);
