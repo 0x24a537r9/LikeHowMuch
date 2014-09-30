@@ -1,5 +1,6 @@
 body {
   background: url(greyzz.png);
+  font-family: 'Bitter', 'Times New Roman', serif;
   text-align: center;
 }
 
@@ -18,7 +19,7 @@ body {
 }
 
 .how-much-is-caption {
-  font-size: 80px;
+  font-size: 70px;
   left: 0;
   margin: auto;
   position: absolute;
@@ -30,7 +31,7 @@ body {
 
 .show-results .how-much-is-caption {
   opacity: 0;
-  top: -80px;
+  top: -70px;
 }
 
 .query-form {
@@ -47,7 +48,7 @@ body {
   position: absolute;
   position: absolute;
   right: 0;
-  top: 128px;
+  top: 118px;
   transition: top 500ms 300ms;
   width: 70%;
   z-index: 5;
@@ -134,13 +135,13 @@ body {
 }
 
 .is-like-caption {
-  font-size: 80px;
+  font-size: 70px;
   left: 0;
   margin: auto;
   opacity: 0;
   position: absolute;
   right: 0;
-  top: 128px;
+  top: 140px;
   transition: opacity 1800ms 900ms;
   z-index: 3;
 }
@@ -151,6 +152,7 @@ body {
 
 .results {
   left: 0;
+  line-height: 1.5;
   opacity: 0;
   position: absolute;
   right: 0;
