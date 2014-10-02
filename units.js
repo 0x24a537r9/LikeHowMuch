@@ -100,7 +100,7 @@ defineUnit('M', 'nautical mile', 'nautical miles', 'm', 1852, ['NM', 'nmi']);
 defineUnit('pc', 'parsec', 'parsecs', 'm', 3.08567758e16);
 defineUnit('au', 'astronomical unit', 'astronomical units', 'm', 149597870700, ['AU', 'ua', 'UA']);
 defineUnit('ly', 'light year', 'light years', 'm', 9460730472580800);
-defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['angstrom', 'angstroms']);
+defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['\u212B', 'angstrom', 'angstroms']);
 defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planck length', 'planck lengths']);
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
 // Time.
