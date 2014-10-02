@@ -25,9 +25,9 @@
       <h1 class="how-much-is-caption">
         How much is
       </h1>
-      <div class="query-form">      
+      <div class="query-form">
         <input class="query-input" type="text" name="query"></input>
-        <button class="query-button">=</button>  
+        <button class="query-button">=</button>
       </div>
       <div class="interpretation">
         Interpreted as: <span class="quantity"></span> <span class="unit"></span>
@@ -59,7 +59,7 @@
       }
 
       $('.query-input, .query-button').prop('disabled', true);
-      
+
       try {
         var standardizedQuery = parseAndStandardize(query);
 
@@ -72,7 +72,7 @@
       } catch (e) {
         showBannerMessage(e.message);
       }
-      
+
       $('.query-input, .query-button').prop('disabled', false);
     }
 
@@ -86,7 +86,7 @@
 
       var initialQuantity = parseFloat(matches[1].replace(/[,\s]/g, ''));
       if (isNaN(initialQuantity)) {
-        throw new Error('Uh... are you sure that\'s a real number?'); 
+        throw new Error('Uh... are you sure that\'s a real number?');
       }
 
       var initialUnitString = matches[2].replace(/[*.^\s\u00B7]+/g, '');
