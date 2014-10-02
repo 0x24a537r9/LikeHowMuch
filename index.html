@@ -26,6 +26,33 @@
         How much is
       </h1>
       <div class="query-form">
+        <ul class="placeholder-container">
+          <li>19,000 mph
+          <li>5 TB
+          <li>80 watts
+          <li>4.3 billion years
+          <li>3 lb.
+          <li>4000 yards
+          <li>1 tsp.
+          <li>0.0000000972m
+          <li>2 fortnights
+          <li>18 gallons
+          <li>14 microseconds
+          <li>72
+          <li>$43,000,000
+          <li>900&deg; Celsius
+          <li>500 bushels
+          <li>0.2 light years
+          <li>400 atmospheres
+          <li>12 parsecs
+          <li>74 btu
+          <li>1,804,000 metric tons
+          <li>527 square km
+          <li>2.341e-13 meters
+          <li>43"
+          <li>500,000 km/h
+          <li>8 dozen
+        </ul>
         <input class="query-input" type="text" name="query"></input>
         <button class="query-button">=</button>
       </div>
@@ -42,14 +69,29 @@
   </body>
   <script>
     var resultTemplate;
-
+    var placeholderTimer;
 
     $(function() {
       resultTemplate = Handlebars.compile($("#result-template").html());
 
       $('.query-button').click(handleQuery);
       $(document).keydown(function(e) { if (e.which == 13) handleQuery(); });
+
+      placeholderTimer = setInterval(handlePlaceholderTimerTick, 1500);
+      setTimeout(handlePlaceholderTimerTick, 0);
+      $('.query-input').focus(function() {
+        clearInterval(placeholderTimer);
+        $('.placeholder-container').addClass('hidden');
+      });
     });
+
+
+    function handlePlaceholderTimerTick() {
+      var $placeholderContainer = $('.placeholder-container');
+      var placeholders = $placeholderContainer.children().length;
+      var i = Math.random() * placeholders | 0;
+      $placeholderContainer.css('transform', 'translateY(' + (i * -100 / placeholders) + '%)');
+    }
 
 
     function handleQuery() {
@@ -78,6 +120,8 @@
 
 
     function parseAndStandardize(query) {
+      // TODO: Add support for "X billion"-like quantities.
+      // TODO: Add support for "1/4"-like quantities.
       // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
       var matches = /^([-+]?[0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)\s*(.*?)\s*$/.exec(query);
       if (!matches) {
