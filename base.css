@@ -52,7 +52,7 @@ body {
   top: 118px;
   transition: top 500ms 300ms;
   width: 70%;
-  z-index: 5;
+  z-index: 6;
 }
 
 .show-results .query-form {
@@ -139,7 +139,7 @@ body {
   right: 0;
   top: 48px;
   transition: opacity 500ms 600ms, top 500ms 600ms;
-  z-index: 4;
+  z-index: 5;
 }
 
 .show-results .interpretation {
@@ -160,17 +160,46 @@ body {
   right: 0;
   top: 140px;
   transition: opacity 1800ms 900ms;
-  z-index: 3;
+  z-index: 4;
 }
 
 .show-results .is-like-caption {
   opacity: 1;
 }
 
+.fade-0,
+.fade-1 {
+  background: linear-gradient(to bottom, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 50%, rgba(250, 250, 250, 0) 100%);
+  border: none;
+  height: 80px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 500ms 1200ms, top 500ms 1200ms;
+  width: 100%;
+  z-index: 3;
+}
+
+.show-results .fade-0,
+.show-results .fade-1 {
+  opacity: 1;
+}
+
+.fade-0 {
+  top: 288px;
+  margin: -40px 0 0 0;
+}
+
+.show-results .fade-0 {
+  top: 240px;
+}
+
 .results {
+  bottom: 45px;
   left: 0;
   line-height: 1.5;
   opacity: 0;
+  overflow-y: scroll;
   position: absolute;
   right: 0;
   top: 288px;
@@ -181,6 +210,15 @@ body {
 .show-results .results {
   opacity: 1;
   top: 240px;
+}
+
+.fade-1 {
+  bottom: 40px;
+  margin: 0 0 -40px 0;
+}
+
+.show-results .fade-1 {
+  bottom: 40px;
 }
 
 .banner {
