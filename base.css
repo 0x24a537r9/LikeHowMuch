@@ -214,12 +214,8 @@ body {
 }
 
 .fade-1 {
-  bottom: 40px;
+  bottom: 45px;
   margin: 0 0 -40px 0;
-}
-
-.show-results .fade-1 {
-  bottom: 40px;
 }
 
 .banner {
