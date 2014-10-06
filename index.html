@@ -171,6 +171,7 @@
 
     function convertAndRender(initialQuantity, initialUnit, rootQuanitity, rootUnit) {
       var relevantKnownQuantities = KNOWN_QUANTITIES[rootUnit.shortName];
+      var mostRelevantQuantityIndex = 0;
 
       var $results = $('.results');
       $results.html('');
@@ -179,9 +180,14 @@
           quantity: formatQuantity(rootQuanitity / relevantKnownQuantities[i].quantity),
           description: relevantKnownQuantities[i].description.split('|')
         }));
+        if (rootQuanitity >= relevantKnownQuantities[i].quantity) {
+          mostRelevantQuantityIndex = i;
+        }
       }
 
       fitResults();
+
+      $results.scrollTop(mostRelevantQuantityIndex * 200 - ($results.height() - 200) / 2 + 25);
 
       $('.content').addClass('show-results');
     }
