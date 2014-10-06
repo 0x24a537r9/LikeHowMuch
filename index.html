@@ -208,7 +208,7 @@
 
 
     function fitResults() {
-      $('.textFitted').css('height', '');
+      $('.textFitted').css('height', '');  // Fix for a bug in the textFit library.
       $('.results li').each(function() {
         textFit(this, {
           alignHoriz: true,
