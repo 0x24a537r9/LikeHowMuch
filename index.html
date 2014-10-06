@@ -85,6 +85,12 @@
         clearInterval(placeholderTimer);
         $('.placeholder-container').addClass('hidden');
       });
+
+      var resizeTimeout;
+      $(window).resize(function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(fitResults, 50);
+      });
     });
 
 
@@ -175,6 +181,8 @@
         }));
       }
 
+      fitResults();
+
       $('.content').addClass('show-results');
     }
 
@@ -196,6 +204,20 @@
       fracStr = _.times(-exp - 1, function() { return '0'; }).join('') + fracStr;  // Prepend 0s.
 
       return (intStr + '.' + fracStr).replace(/\.?0*$/, '');
+    }
+
+
+    function fitResults() {
+      $('.textFitted').css('height', '');
+      $('.results li').each(function() {
+        textFit(this, {
+          alignHoriz: true,
+          alignVert: true,
+          multiLine: true,
+          reProcess: true,
+          maxFontSize: 48
+        });
+      });
     }
   </script>
 </html>
