@@ -30,7 +30,7 @@ defineKnownQuantity(4.267, 'cm', '| golf balls stacked on top of each other');
 defineKnownQuantity(1.7, 'm', '| times the average height of a human');
 defineKnownQuantity(45, 'ft', '| school buses long');
 defineKnownQuantity(30, 'm', '| blue whales lined up end-to-end');
-defineKnownQuantity(100, 'yd', '| football fields long');
+defineKnownQuantity(100, 'yd', '| (American) football fields long');
 defineKnownQuantity(70.6, 'm', '| Boeing 747s long');
 defineKnownQuantity(93.47, 'm', '| Statues of Liberty stacked on top of each other');
 defineKnownQuantity(137, 'm', '| times the height of the Great Pyramid of Giza');

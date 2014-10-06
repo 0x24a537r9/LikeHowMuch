@@ -151,8 +151,8 @@ body {
 }
 
 .quantity {
+  color: #2A70B6;
   font-weight: bold;
-  opacity: .8;
 }
 
 .is-like-caption {
