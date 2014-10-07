@@ -219,8 +219,18 @@ body {
 }
 
 .results li {
+  background-color: rgba(42, 112, 182, 0);
+  border-radius: 5px;
+  box-shadow: 0 0 3px 3px rgba(42, 112, 182, 0);
   height: 150px;
   margin: 50px;
+  transition: box-shadow 1000ms, background-color 1000ms;
+}
+
+.results li.flash {
+  background-color: rgba(42, 112, 182, 0.1);
+  box-shadow: 0 0 3px 3px rgba(42, 112, 182, 0.1);
+  transition: none;
 }
 
 .results li:first-of-type:before,

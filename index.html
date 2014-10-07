@@ -72,6 +72,8 @@
   <script>
     var resultTemplate;
     var placeholderTimer;
+    var isFirstQuery = true;
+
 
     $(function() {
       resultTemplate = Handlebars.compile($("#result-template").html());
@@ -124,6 +126,8 @@
       }
 
       $('.query-input, .query-button').prop('disabled', false);
+
+      isFirstQuery = false;
     }
 
 
@@ -188,6 +192,13 @@
       fitResults();
 
       $results.scrollTop(mostRelevantQuantityIndex * 200 - ($results.height() - 200) / 2 + 25);
+      var flashDelay = isFirstQuery ? 1800 : 0;
+      setTimeout(function() {
+        $('.results li').eq(mostRelevantQuantityIndex).addClass('flash');
+      }, flashDelay);
+      setTimeout(function() {
+        $('.results li').eq(mostRelevantQuantityIndex).removeClass('flash')
+      }, flashDelay + 100);
 
       $('.content').addClass('show-results');
     }
