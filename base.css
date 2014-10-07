@@ -51,6 +51,7 @@ body {
   position: absolute;
   position: absolute;
   right: 0;
+  text-shadow: none;
   top: 118px;
   transition: top 500ms 300ms;
   width: 70%;
