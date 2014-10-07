@@ -193,9 +193,7 @@
       
       var flashDelay = isFirstQuery ? 1300 : 0;
       setTimeout(function() {
-        $results.animate({
-          scrollTop: mostRelevantQuantityIndex * 200 - ($results.height() - 200) / 2 + 25
-        }, 500);
+        scrollToResult(mostRelevantQuantityIndex);
       }, flashDelay)
       setTimeout(function() {
         $('.results li').eq(mostRelevantQuantityIndex).addClass('flash');
@@ -239,6 +237,12 @@
           maxFontSize: 48
         });
       });
+    }
+
+
+    function scrollToResult(i) {
+      var $results = $('.results');
+      $results.animate({scrollTop: i * 200 - ($results.height() - 200) / 2 + 25}, 500);
     }
   </script>
 </html>
