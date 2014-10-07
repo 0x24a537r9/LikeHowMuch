@@ -190,15 +190,19 @@
       }
 
       fitResults();
-
-      $results.scrollTop(mostRelevantQuantityIndex * 200 - ($results.height() - 200) / 2 + 25);
-      var flashDelay = isFirstQuery ? 1800 : 0;
+      
+      var flashDelay = isFirstQuery ? 1300 : 0;
+      setTimeout(function() {
+        $results.animate({
+          scrollTop: mostRelevantQuantityIndex * 200 - ($results.height() - 200) / 2 + 25
+        }, 500);
+      }, flashDelay)
       setTimeout(function() {
         $('.results li').eq(mostRelevantQuantityIndex).addClass('flash');
-      }, flashDelay);
+      }, flashDelay + 500);
       setTimeout(function() {
         $('.results li').eq(mostRelevantQuantityIndex).removeClass('flash')
-      }, flashDelay + 100);
+      }, flashDelay + 600);
 
       $('.content').addClass('show-results');
     }
