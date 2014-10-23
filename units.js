@@ -87,6 +87,7 @@ var UNITS = {};
 defineUnit('m', 'meter', 'meters', 'm', 1);
 defineSiPrefixedUnits('m');
 defineUnit('metres', 'metre', 'metres', 'm', 1);
+// TODO: Add support for kilometre-like units.
 defineUnit('microns', 'micron', 'microns', 'm', 1e-6);
 defineUnit('in', 'inch', 'inches', 'cm', 2.54, ['"']);
 defineUnit('paces', 'pace', 'paces', 'in', 30);
@@ -127,3 +128,12 @@ defineUnit('ct', 'carat', 'carats', 'g', 0.2);
 defineUnit('t', 'tonne', 'tonnes', 'kg', 1000, ['metric ton', 'metric tons']);
 defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
 defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
+// Speed.
+defineUnit('m/s', 'meter per second', 'meters per second', 'm/s', 1);
+// TODO: Add support for "Mach 2.3"-like queries.
+defineUnit('km/s', 'kilometer per second', 'kilometers per second', 'm/s', 1000, ['kps']);
+defineUnit('km/h', 'kilometer per hour', 'kilometers per hour', 'm/s', 5 / 18, ['kph']);
+defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
+defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
+defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
+defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
