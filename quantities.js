@@ -99,6 +99,10 @@ defineKnownQuantity(7.8e6, 'kg', '| Virginia-class nuclear submarines');
 defineKnownQuantity(5.2e7, 'kg', '| RMS Titanics');
 defineKnownQuantity(6e9, 'kg', '| Great Pyramids of Giza');
 defineKnownQuantity(4e11, 'kg', '| times the total biomass of the human population');
+// Speed/Velocity.
+defineKnownQuantity(5, 'km/h', '| times the average human walking speed');
+// Area.
+defineKnownQuantity(1, 'cm2', '| fingernails');
 
 
 // Sort the quantities.

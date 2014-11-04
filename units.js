@@ -36,19 +36,37 @@ function aliasUnit(shortName, longName) {
 }
 
 
-function defineSiPrefixedUnits(shortName, opt_prefixes) {
+function defineSiPrefixedUnits(shortName, singularLongName, pluralLongName, opt_altShortNames,
+                               opt_altLongNames, opt_prefixes) {
+  opt_altShortNames = opt_altShortNames || [];
+  opt_altLongNames = opt_altLongNames || [];
+
   // TODO: Check for collisions.
-  var unit = UNITS[shortName];
+  var unit = UNITS[shortName.replace('_', '')];
   opt_prefixes = opt_prefixes || 'yzafpnumcdDhkMGTPEZY';
   for (var i = 0; i < opt_prefixes.length; ++i) {
     var prefix = SI_PREFIXES[opt_prefixes[i]];
-    defineUnit(prefix.shortName + unit.shortName,
-               prefix.longName + unit.singularLongName,
-               prefix.longName + unit.pluralLongName,
+    defineUnit(shortName.replace('_', prefix.shortName),
+               singularLongName.replace('_', prefix.longName),
+               pluralLongName.replace('_', prefix.longName),
                unit.shortName,
                prefix.multiplier * unit.multiplier);
     if (prefix.altShortName) {
-      aliasUnit(prefix.shortName + unit.shortName, prefix.altShortName + unit.shortName);
+      aliasUnit(shortName.replace('_', prefix.shortName),
+                shortName.replace('_', prefix.altShortName));
+    }
+
+    for (var j = 0; j < opt_altShortNames.length; ++j) {
+      aliasUnit(shortName.replace('_', prefix.shortName),
+                opt_altShortNames[j].replace('_', prefix.shortName));
+      if (prefix.altShortName) {
+        aliasUnit(prefix.shortName + unit.shortName, prefix.altShortName + unit.shortName);
+      }
+    }
+
+    for (var j = 0; j < opt_altLongNames.length; ++j) {
+      aliasUnit(shortName.replace('_', prefix.shortName),
+                opt_altLongNames[j].replace(/\s+/g, '').replace('_', prefix.longName));
     }
   }
 }
@@ -85,9 +103,7 @@ defineSiPrefix('Y', 'Y', 'yotta', 1e24);
 var UNITS = {};
 // Length.
 defineUnit('m', 'meter', 'meters', 'm', 1);
-defineSiPrefixedUnits('m');
-defineUnit('metres', 'metre', 'metres', 'm', 1);
-// TODO: Add support for kilometre-like units.
+defineSiPrefixedUnits('_m', '_meter', '_meters', [], ['_metre', '_metres']);
 defineUnit('microns', 'micron', 'microns', 'm', 1e-6);
 defineUnit('in', 'inch', 'inches', 'cm', 2.54, ['"']);
 defineUnit('paces', 'pace', 'paces', 'in', 30);
@@ -106,7 +122,7 @@ defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planc
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
 // Time.
 defineUnit('s', 'second', 'seconds', 's', 1);
-defineSiPrefixedUnits('s');
+defineSiPrefixedUnits('_s', '_second', '_seconds');
 defineUnit('min', 'minute', 'minutes', 's', 60);
 defineUnit('hr', 'hour', 'hours', 'min', 60);
 defineUnit('d', 'day', 'days', 'hr', 24);
@@ -120,7 +136,7 @@ defineUnit('millenia', 'millenium', 'millenia', 'y', 1000);
 defineUnit('epochs', 'epoch', 'epochs', 'y', 1e6);
 // Mass/Weight.
 defineUnit('g', 'gram', 'grams', 'g', 1);
-defineSiPrefixedUnits('g');
+defineSiPrefixedUnits('_g', '_gram', '_grams', [], ['_gramme', '_grammes']);
 defineUnit('lb', 'pound', 'pounds', 'g', 453.592);
 defineUnit('oz', 'ounce', 'ounces', 'g', 28.3495);
 defineUnit('ozt', 'troy ounce', 'troy ounces', 'g', 31.1034768);
@@ -131,9 +147,21 @@ defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
 // Speed.
 defineUnit('m/s', 'meter per second', 'meters per second', 'm/s', 1);
 // TODO: Add support for "Mach 2.3"-like queries.
+defineSiPrefixedUnits('_m/s', '_meter per second', '_meters per second', [],
+    ['_meter/second', '_meters/second', '_metre per second', '_metres per second', '_metre/second',
+     '_metres/second']);
 defineUnit('km/s', 'kilometer per second', 'kilometers per second', 'm/s', 1000, ['kps']);
 defineUnit('km/h', 'kilometer per hour', 'kilometers per hour', 'm/s', 5 / 18, ['kph']);
 defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
 defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
+// Area.
+defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
+  'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
+  'meters squared', 'm2'
+]);
+defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', ['_m2'],
+    ['_meter square', '_meters square', '_meter squared', '_meters squared', '_meter2', '_meters2',
+     'square _metre', 'square _metres', '_metre square', '_metres square', '_metre squared',
+     '_metres squared', '_metre2', '_metres2']);
