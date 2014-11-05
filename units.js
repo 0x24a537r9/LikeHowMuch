@@ -14,7 +14,7 @@ function defineUnit(shortName, singularLongName, pluralLongName, unit, multiplie
     shortName: shortName,
     singularLongName: singularLongName,
     pluralLongName: pluralLongName,
-    unit: unit,
+    unit: unit.replace(/\s+/g, ''),
     multiplier: multiplier
   };
   aliasUnit(shortName, singularLongName.replace(/\s+/g, ''));
@@ -106,8 +106,12 @@ var UNITS = {};
 defineUnit('m', 'meter', 'meters', 'm', 1);
 defineSiPrefixedUnits('_m', '_meter', '_meters', [], ['_metre', '_metres']);
 defineUnit('microns', 'micron', 'microns', 'm', 1e-6);
+defineUnit('mils', 'mil', 'mils', 'in', 1 / 1000, ['thou', 'thousandth', 'thousandths']);
+defineUnit('thirtysecondths', 'thirtysecondth of an inch', 'thirtysecondths of an inch', 'in',
+           1 / 32);
+defineUnit('sixteenths', 'sixteenth of an inch', 'sixteenths of an inch', 'in', 1 / 16);
+defineUnit('eighths', 'eighth of an inch', 'eighths of an inch', 'in', 1 / 8);
 defineUnit('in', 'inch', 'inches', 'cm', 2.54, ['"']);
-// Add support for mil and thou.
 defineUnit('paces', 'pace', 'paces', 'in', 30);
 defineUnit('ft', 'foot', 'feet', 'in', 12, ['\'']);
 defineUnit('yd', 'yard', 'yards', 'ft', 3);
@@ -122,7 +126,6 @@ defineUnit('ly', 'light year', 'light years', 'm', 9460730472580800);
 defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['\u212B', 'angstrom', 'angstroms']);
 defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planck length', 'planck lengths']);
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
-// TODO: Add support for gauge.
 // Time.
 defineUnit('s', 'second', 'seconds', 's', 1);
 defineSiPrefixedUnits('_s', '_second', '_seconds');
@@ -141,10 +144,11 @@ defineUnit('epochs', 'epoch', 'epochs', 'y', 1e6);
 defineUnit('g', 'gram', 'grams', 'g', 1);
 defineSiPrefixedUnits('_g', '_gram', '_grams', [], ['_gramme', '_grammes']);
 defineUnit('lb', 'pound', 'pounds', 'g', 453.592);
-// TODO: Add support for dram.
+defineUnit('dr', 'dram', 'drams', 'oz', 1 / 16, ['drachm', 'drachms']);
 defineUnit('oz', 'ounce', 'ounces', 'g', 28.3495);
-defineUnit('ozt', 'troy ounce', 'troy ounces', 'g', 31.1034768);
-// TODO: Add support for troy pound.
+defineUnit('gr', 'grain', 'grains', 'mg', 64.79891, ['troy grain', 'troy grains']);
+defineUnit('oz t', 'troy ounce', 'troy ounces', 'g', 31.1034768);
+defineUnit('lb t', 'troy pound', 'troy pounds', 'oz t', 12);
 defineUnit('ct', 'carat', 'carats', 'g', 0.2);
 defineUnit('t', 'tonne', 'tonnes', 'kg', 1000, ['metric ton', 'metric tons']);
 defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
@@ -162,7 +166,7 @@ defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
 defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
-// TODO: Add support for C.
+defineUnit('C', 'time the speed of light', 'times the speed of light', 'm/s', 299792458);
 // Area.
 defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
   'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
