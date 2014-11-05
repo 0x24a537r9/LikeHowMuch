@@ -155,13 +155,13 @@ defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
 defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
 // Speed.
 defineUnit('m/s', 'meter per second', 'meters per second', 'm/s', 1);
-// TODO: Add support for "Mach 2.3"-like queries.
 defineSiPrefixedUnits('_m/s', '_meter per second', '_meters per second', [], [
   '_meter/second', '_meters/second', '_metre per second', '_metres per second', '_metre/second',
   '_metres/second'
 ]);
 aliasUnit('km/s', 'kps');
 defineUnit('km/h', 'kilometer per hour', 'kilometers per hour', 'm/s', 5 / 18, ['kph']);
+defineUnit('M', 'Mach', 'Mach', 'm/s', 340.29, ['Ma', 'mach']);
 defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);

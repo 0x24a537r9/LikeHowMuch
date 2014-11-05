@@ -135,9 +135,15 @@
       // TODO: Add support for "X billion"-like quantities.
       // TODO: Add support for "1/4"-like quantities.
       // Floating point regex mostly from http://www.regular-expressions.info/floatingpoint.html.
-      var matches = /^([-+]?[0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)\s*(.*?)\s*$/.exec(query);
+      var matches = /^([0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)\s*(.*?)\s*$/.exec(query);
       if (!matches) {
-        throw new Error('Huh. I don\'t recognize that measurement...');
+        matches = /^([^0-9.]*?)([0-9,\s]*\.?[0-9,\s]+(?:[eE][-+]?[0-9,\s]+)?)$/.exec(query);
+        if (!matches) {
+          throw new Error('Huh. I don\'t recognize that measurement...');
+        }
+        var swap = matches[1];
+        matches[1] = matches[2];
+        matches[2] = swap;
       }
 
       var initialQuantity = parseFloat(matches[1].replace(/[,\s]/g, ''));
