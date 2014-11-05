@@ -147,10 +147,11 @@ defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
 // Speed.
 defineUnit('m/s', 'meter per second', 'meters per second', 'm/s', 1);
 // TODO: Add support for "Mach 2.3"-like queries.
-defineSiPrefixedUnits('_m/s', '_meter per second', '_meters per second', [],
-    ['_meter/second', '_meters/second', '_metre per second', '_metres per second', '_metre/second',
-     '_metres/second']);
-defineUnit('km/s', 'kilometer per second', 'kilometers per second', 'm/s', 1000, ['kps']);
+defineSiPrefixedUnits('_m/s', '_meter per second', '_meters per second', [], [
+  '_meter/second', '_meters/second', '_metre per second', '_metres per second', '_metre/second',
+  '_metres/second'
+]);
+aliasUnit('km/s', 'kps');
 defineUnit('km/h', 'kilometer per hour', 'kilometers per hour', 'm/s', 5 / 18, ['kph']);
 defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
@@ -161,7 +162,26 @@ defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
   'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
   'meters squared', 'm2'
 ]);
-defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', ['_m2'],
-    ['_meter square', '_meters square', '_meter squared', '_meters squared', '_meter2', '_meters2',
-     'square _metre', 'square _metres', '_metre square', '_metres square', '_metre squared',
-     '_metres squared', '_metre2', '_metres2']);
+defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', ['_m2'], [
+  '_meter square', '_meters square', '_meter squared', '_meters squared', '_meter2', '_meters2',
+  'square _metre', 'square _metres', '_metre square', '_metres square', '_metre squared',
+  '_metres squared', '_metre2', '_metres2'
+]);
+defineUnit('hectares', 'hectare', 'hectares', 'm\u00B2', 10000);
+defineUnit('ft\u00B2', 'square foot', 'square feet', 'm\u00B2', 0.092903, [
+  'sq ft', 'square ft', 'foot square', 'feet square', 'ft square', 'foot squared', 'feet squared',
+  'ft squared', 'ft2'
+]);
+defineUnit('in\u00B2', 'square inch', 'square inches', 'ft\u00B2', 1 / (12 * 12), [
+  'sq in', 'square in', 'inch square', 'inches square', 'in square', 'inch squared', 'inches squared',
+  'in squared', 'in2'
+]);
+defineUnit('mi\u00B2', 'square mile', 'square miles', 'ft\u00B2', 5280 * 5280, [
+  'sq mi', 'square mi', 'mile square', 'miles square', 'mi square', 'mile squared', 'miles squared',
+  'mi squared', 'in2'
+]);
+defineUnit('yd\u00B2', 'square yard', 'square yards', 'ft\u00B2', 3 * 3, [
+  'sq yd', 'square yd', 'yard square', 'yards square', 'yd square', 'yard squared', 'yards squared',
+  'yd squared', 'in2'
+]);
+defineUnit('acres', 'acre', 'acres', 'ft\u00B2', 43560);
