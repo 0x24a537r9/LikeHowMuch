@@ -103,6 +103,9 @@ defineKnownQuantity(4e11, 'kg', '| times the total biomass of the human populati
 defineKnownQuantity(5, 'km/h', '| times the average human walking speed');
 // Area.
 defineKnownQuantity(1, 'cm2', '| fingernails');
+// Volume.
+defineKnownQuantity(23, 'mm\u00B3', '| large raindrops')
+defineKnownQuantity(1, 'cup', '| cups of coffee')
 
 
 // Sort the quantities.

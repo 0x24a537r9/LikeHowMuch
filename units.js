@@ -10,7 +10,7 @@ function defineSiPrefix(key, shortName, longName, multiplier, opt_altShortName) 
 
 function defineUnit(shortName, singularLongName, pluralLongName, unit, multiplier, opt_aliases) {
   // TODO: Check for collisions.
-  UNITS[shortName] = {
+  UNITS[shortName.replace(/\s+/g, '')] = {
     shortName: shortName,
     singularLongName: singularLongName,
     pluralLongName: pluralLongName,
@@ -32,25 +32,26 @@ function defineUnit(shortName, singularLongName, pluralLongName, unit, multiplie
 function aliasUnit(shortName, longName) {
   // TODO: Check for collisions.
   // TODO: Ensure aliased unit exists.
-  UNITS[longName] = {unit: shortName};
+  UNITS[longName] = {unit: shortName.replace(/\s+/g, '')};
 }
 
 
 function defineSiPrefixedUnits(shortName, singularLongName, pluralLongName, opt_altShortNames,
-                               opt_altLongNames, opt_prefixes) {
+                               opt_altLongNames, opt_exponent, opt_prefixes) {
   opt_altShortNames = opt_altShortNames || [];
   opt_altLongNames = opt_altLongNames || [];
+  opt_exponent = opt_exponent || 1;
+  opt_prefixes = opt_prefixes || 'yzafpnumcdDhkMGTPEZY';
 
   // TODO: Check for collisions.
   var unit = UNITS[shortName.replace('_', '')];
-  opt_prefixes = opt_prefixes || 'yzafpnumcdDhkMGTPEZY';
   for (var i = 0; i < opt_prefixes.length; ++i) {
     var prefix = SI_PREFIXES[opt_prefixes[i]];
     defineUnit(shortName.replace('_', prefix.shortName),
                singularLongName.replace('_', prefix.longName),
                pluralLongName.replace('_', prefix.longName),
                unit.shortName,
-               prefix.multiplier * unit.multiplier);
+               Math.pow(prefix.multiplier, opt_exponent) * unit.multiplier);
     if (prefix.altShortName) {
       aliasUnit(shortName.replace('_', prefix.shortName),
                 shortName.replace('_', prefix.altShortName));
@@ -106,6 +107,7 @@ defineUnit('m', 'meter', 'meters', 'm', 1);
 defineSiPrefixedUnits('_m', '_meter', '_meters', [], ['_metre', '_metres']);
 defineUnit('microns', 'micron', 'microns', 'm', 1e-6);
 defineUnit('in', 'inch', 'inches', 'cm', 2.54, ['"']);
+// Add support for mil and thou.
 defineUnit('paces', 'pace', 'paces', 'in', 30);
 defineUnit('ft', 'foot', 'feet', 'in', 12, ['\'']);
 defineUnit('yd', 'yard', 'yards', 'ft', 3);
@@ -120,6 +122,7 @@ defineUnit('ly', 'light year', 'light years', 'm', 9460730472580800);
 defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['\u212B', 'angstrom', 'angstroms']);
 defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planck length', 'planck lengths']);
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
+// TODO: Add support for gauge.
 // Time.
 defineUnit('s', 'second', 'seconds', 's', 1);
 defineSiPrefixedUnits('_s', '_second', '_seconds');
@@ -138,8 +141,10 @@ defineUnit('epochs', 'epoch', 'epochs', 'y', 1e6);
 defineUnit('g', 'gram', 'grams', 'g', 1);
 defineSiPrefixedUnits('_g', '_gram', '_grams', [], ['_gramme', '_grammes']);
 defineUnit('lb', 'pound', 'pounds', 'g', 453.592);
+// TODO: Add support for dram.
 defineUnit('oz', 'ounce', 'ounces', 'g', 28.3495);
 defineUnit('ozt', 'troy ounce', 'troy ounces', 'g', 31.1034768);
+// TODO: Add support for troy pound.
 defineUnit('ct', 'carat', 'carats', 'g', 0.2);
 defineUnit('t', 'tonne', 'tonnes', 'kg', 1000, ['metric ton', 'metric tons']);
 defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
@@ -157,6 +162,7 @@ defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
 defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
+// TODO: Add support for C.
 // Area.
 defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
   'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
@@ -166,7 +172,7 @@ defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', ['_m2'], [
   '_meter square', '_meters square', '_meter squared', '_meters squared', '_meter2', '_meters2',
   'square _metre', 'square _metres', '_metre square', '_metres square', '_metre squared',
   '_metres squared', '_metre2', '_metres2'
-]);
+], 2);
 defineUnit('hectares', 'hectare', 'hectares', 'm\u00B2', 10000);
 defineUnit('ft\u00B2', 'square foot', 'square feet', 'm\u00B2', 0.092903, [
   'sq ft', 'square ft', 'foot square', 'feet square', 'ft square', 'foot squared', 'feet squared',
@@ -185,3 +191,69 @@ defineUnit('yd\u00B2', 'square yard', 'square yards', 'ft\u00B2', 3 * 3, [
   'yd squared', 'in2'
 ]);
 defineUnit('acres', 'acre', 'acres', 'ft\u00B2', 43560);
+// Volume.
+defineUnit('m\u00B3', 'cubic meter', 'cubic meters', 'm\u00B3', 1, [
+  'cubic metre', 'cubic metres', 'meter cubic', 'meters cubic', 'meter cubed', 'meters cubed', 'm3'
+]);
+defineSiPrefixedUnits('_m\u00B3', 'cubic _meter', 'cubic _meters', ['_m3'], [
+  '_meter cubic', '_meters cubic', '_meter cubed', '_meters cubed', '_meter3', '_meters3',
+  'cubic _metre', 'cubic _metres', '_metre cubic', '_metres cubic', '_metre cubed', '_metres cubed',
+  '_metre3', '_metres3'
+], 3);
+aliasUnit('mm\u00B3', 'mill');
+aliasUnit('mm\u00B3', 'mills');
+aliasUnit('cm\u00B3', 'cc');
+aliasUnit('cm\u00B3', 'ccs');
+aliasUnit('cm\u00B3', 'ccms');
+defineUnit('L', 'liter', 'liters', 'm\u00B3', 0.001, ['l', 'litre', 'litres']);
+defineSiPrefixedUnits('_L', '_liter', '_liters', ['_l'], ['_litre', '_litres']);
+defineUnit('ft\u00B3', 'cubic foot', 'cubic feet', 'm\u00B3', 0.0283168, [
+  'sq ft', 'cubic ft', 'foot cubic', 'feet cubic', 'ft cubic', 'foot cubed', 'feet cubed',
+  'ft cubed', 'ft2'
+]);
+defineUnit('in\u00B3', 'cubic inch', 'cubic inches', 'ft\u00B3', 1 / (12 * 12 * 12), [
+  'sq in', 'cubic in', 'inch cubic', 'inches cubic', 'in cubic', 'inch cubed', 'inches cubed',
+  'in cubed', 'in2'
+]);
+defineUnit('mi\u00B3', 'cubic mile', 'cubic miles', 'ft\u00B3', 5280 * 5280 * 5280, [
+  'sq mi', 'cubic mi', 'mile cubic', 'miles cubic', 'mi cubic', 'mile cubed', 'miles cubed',
+  'mi cubed', 'in2'
+]);
+defineUnit('yd\u00B3', 'cubic yard', 'cubic yards', 'ft\u00B3', 3 * 3 * 3, [
+  'sq yd', 'cubic yd', 'yard cubic', 'yards cubic', 'yd cubic', 'yard cubed', 'yards cubed',
+  'yd cubed', 'in2'
+]);
+defineUnit('smidgens', 'smidgen', 'smidgens', 'tsp', 1 / 32);
+defineUnit('pinches', 'pinch', 'pinches', 'tsp', 1 / 16);
+defineUnit('dashes', 'dash', 'dashes', 'tsp', 1 / 8);
+defineUnit('tsp', 'teaspoon', 'teaspoons', 'm\u00B3', 4.92892e-6);
+defineUnit('dstspn', 'dessertspoon', 'dessertspoons', 'tsp', 2);
+defineUnit('tbsp', 'tablespoon', 'tablespoons', 'tsp', 3, ['tbl']);
+defineUnit('fl oz', 'fluid ounce', 'fluid ounces', 'tsp', 6, ['oz fl']);
+defineUnit('fl dr', 'fluid dram', 'fluid drams', 'fl oz', 1 / 8, [
+  'fluid drachm', 'fluid drachms', 'fluidram', 'fluidrams', 'fluidrachm', 'fluidrachms', 'f3'
+]);
+defineUnit('shots', 'shot', 'shots', 'fl oz', 1.5);
+defineUnit('gills', 'gill', 'gills', 'fl oz', 4);
+defineUnit('cups', 'cup', 'cups', 'tbsp', 16, ['C', 'c']);
+defineUnit('pt', 'pint', 'pints', 'cups', 2, ['p']);
+defineUnit('qt', 'quart', 'quarts', 'pt', 2);
+defineUnit('gal', 'gallon', 'gallons', 'qt', 4);
+defineUnit('imp fl oz', 'imperial fluid ounce', 'imperial fluid ounces', 'm\u00B3', 2.84131e-5);
+defineUnit('imp fl dr', 'imperial fluid dram', 'imperial fluid dram', 'imp fl oz', 1 / 8, [
+  'imperial fluid drachm', 'imperial fluid drachms', 'imperial fluidram', 'imperial fluidrams',
+  'imperial fluidrachm', 'imperial fluidrachms'
+]);
+defineUnit('imp gills', 'imperial gill', 'imperial gills', 'imp fl oz', 5);
+defineUnit('imp cups', 'imperial cup', 'imperial cups', 'imp fl oz', 10);
+defineUnit('imp pts', 'imperial pint', 'imperial pints', 'imp cups', 2, ['imp p']);
+defineUnit('imp quarts', 'imperial quart', 'imperial quarts', 'imp pts', 2);
+defineUnit('imp gal', 'imperial gallon', 'imperial gallons', 'imp qts', 4);
+defineUnit('imp pecks', 'imperial peck', 'imperial pecks', 'imp gals', 2);
+defineUnit('imp bsh', 'imperial bushel', 'imperial bushels', 'imp pecks', 4, ['imp bu']);
+defineUnit('dry cups', 'dry cup', 'dry cups', 'cups', 1.1636);
+defineUnit('dry pt', 'dry pint', 'dry pints', 'pt', 1.1636, ['dry p']);
+defineUnit('dry qt', 'dry quart', 'dry quarts', 'qt', 1.1636);
+defineUnit('dry gal', 'dry gallon', 'dry gallons', 'gal', 1.1636);
+defineUnit('pecks', 'peck', 'pecks', 'dry gal', 2);
+defineUnit('bsh', 'bushel', 'bushels', 'pecks', 4, ['bu']);
