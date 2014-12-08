@@ -289,3 +289,18 @@ defineUnit('PiB', 'pebibyte', 'pebibytes', 'B', Math.pow(1024, 5));
 defineUnit('EiB', 'exbibyte', 'exbibytes', 'B', Math.pow(1024, 6));
 defineUnit('ZiB', 'zebibyte', 'zebibytes', 'B', Math.pow(1024, 7));
 defineUnit('YiB', 'yobibyte', 'yobibytes', 'B', Math.pow(1024, 8));
+
+/********************  Currency  ********************/
+
+defineUnit('USD', 'US dollar', 'US dollars', 'USD', 1, ['$', 'dollar', 'dollars']);
+defineUnit('\u00A2', 'cent', 'cents', 'USD', 0.01, ['penny', 'pennies']);
+defineUnit('nickels', 'nickel', 'nickels', 'USD', 0.05);
+defineUnit('dimes', 'dime', 'dimes', 'USD', 0.10);
+defineUnit('quarters', 'quarter', 'quarters', 'USD', 0.25);
+defineUnit('half dollars', 'half dollar', 'half dollars', 'USD', 0.50);
+defineUnit('EUR', 'Euro', 'Euros', 'USD', 1.23, ['\u20AC']);
+defineUnit('GBP', 'pound sterling', 'pounds sterling', 'USD', 1.56,
+    ['\u00A3', 'pound', 'pounds', 'British pound sterling', 'British pounds sterling']);
+defineUnit('p', 'pence', 'pence', 'GBP', 0.01);
+defineUnit('JPY', 'Japanese Yen', 'Japanese Yen', 'USD', 0.0082, ['\u00A5', 'yen']);
+defineUnit('CNY', 'Chinese Yuan', 'Chinese Yuan', 'USD', 0.16, ['yuan']);

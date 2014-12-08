@@ -143,6 +143,32 @@ defineKnownQuantity(8, 'EB', '| Utah NSA data centers');
 defineKnownQuantity(15, 'EB', '| times the entire data capacity of Google in 2013');
 defineKnownQuantity(4, 'ZB', '| times the size of the entire World Wide Web in 2013');
 
+/********************  Currency  ********************/
+
+defineKnownQuantity(0.5, 'USD', '| packs of gum');
+defineKnownQuantity(1, 'USD', '| cans of Coca-Cola');
+defineKnownQuantity(1.65, 'USD', '| McDonalds cheeseburgers');
+defineKnownQuantity(1.814368, 'USD', '| pounds in American pennies');
+defineKnownQuantity(4.99, 'USD', '| loaves of bread');
+defineKnownQuantity(7.25, 'USD', '| hours of work at a minimum wage job in America');
+defineKnownQuantity(15.99, 'USD', '| t-shirts');
+defineKnownQuantity(39.99, 'USD', '| pairs of Levi\'s jeans');
+defineKnownQuantity(80, 'USD', '| nice dinners for 2 in Los Angeles');
+defineKnownQuantity(247, 'USD', '| weeks of food for an American family of 4');
+defineKnownQuantity(400, 'USD', '| bargain 50" TVs');
+defineKnownQuantity(468, 'USD', '| gallons of loose change');
+defineKnownQuantity(616, 'USD', '| times the average yearly income in India');
+defineKnownQuantity(1999, 'USD', '| top-of-the-line MacBook Pros');
+defineKnownQuantity(3763, 'USD', '| months in an average Manhattan apartment in 2014');
+defineKnownQuantity(18290, 'USD', '| sticker-priced 2015 Honda Civics');
+defineKnownQuantity(100000, 'USD', '| rural 2-bedroom American homes');
+defineKnownQuantity(1200000, 'USD', '| briefcases full of $100 bills');
+defineKnownQuantity(1914000, 'USD', '| Bugatti Veyrons');
+defineKnownQuantity(274000000, 'USD', '| Paul Cézanne\'s "The Card Players"');
+defineKnownQuantity(10500000000, 'USD', '| times Mark Zuckerberg\'s 2013 earnings');
+defineKnownQuantity(73500000000, 'USD', '| times Warren Buffett\'s 2014 net worth');
+defineKnownQuantity(77608740000000, 'USD', '| times the total global GDP in 2014');
+
 
 // Sort the quantities.
 for (var unitShortName in KNOWN_QUANTITIES) {
