@@ -51,7 +51,7 @@ function defineSiPrefixedUnits(shortName, singularLongName, pluralLongName, opt_
                singularLongName.replace('_', prefix.longName),
                pluralLongName.replace('_', prefix.longName),
                unit.shortName,
-               Math.pow(prefix.multiplier, opt_exponent) * unit.multiplier);
+               Math.pow(prefix.multiplier, opt_exponent));
     if (prefix.altShortName) {
       aliasUnit(shortName.replace('_', prefix.shortName),
                 shortName.replace('_', prefix.altShortName));
@@ -102,7 +102,9 @@ defineSiPrefix('Y', 'Y', 'yotta', 1e24);
 
 
 var UNITS = {};
-// Length.
+
+/********************  Length  ********************/
+
 defineUnit('m', 'meter', 'meters', 'm', 1);
 defineSiPrefixedUnits('_m', '_meter', '_meters', [], ['_metre', '_metres']);
 defineUnit('microns', 'micron', 'microns', 'm', 1e-6);
@@ -126,7 +128,9 @@ defineUnit('ly', 'light year', 'light years', 'm', 9460730472580800);
 defineUnit('\u00C5', '\u00E5ngstr\u00F6m', '\u00E5ngstr\u00F6ms', 'm', 1e-10, ['\u212B', 'angstrom', 'angstroms']);
 defineUnit('lP', 'Planck length', 'Planck lengths', 'm', 1.61619926e-35, ['planck length', 'planck lengths']);
 defineUnit('cubits', 'cubit', 'cubits', 'cm', 45.72);
-// Time.
+
+/********************  Time  ********************/
+
 defineUnit('s', 'second', 'seconds', 's', 1);
 defineSiPrefixedUnits('_s', '_second', '_seconds');
 defineUnit('min', 'minute', 'minutes', 's', 60);
@@ -140,7 +144,9 @@ defineUnit('decades', 'decade', 'decades', 'y', 10);
 defineUnit('centuries', 'century', 'centuries', 'y', 100);
 defineUnit('millenia', 'millenium', 'millenia', 'y', 1000);
 defineUnit('epochs', 'epoch', 'epochs', 'y', 1e6);
-// Mass/Weight.
+
+/********************  Mass / Weight  ********************/
+
 defineUnit('g', 'gram', 'grams', 'g', 1);
 defineSiPrefixedUnits('_g', '_gram', '_grams', [], ['_gramme', '_grammes']);
 defineUnit('lb', 'pound', 'pounds', 'g', 453.592);
@@ -153,7 +159,9 @@ defineUnit('ct', 'carat', 'carats', 'g', 0.2);
 defineUnit('t', 'tonne', 'tonnes', 'kg', 1000, ['metric ton', 'metric tons']);
 defineUnit('tons', 'ton', 'tons', 'lb', 2000, ['short ton', 'short tons']);
 defineUnit('long tons', 'long ton', 'long tons', 'lb', 2240);
-// Speed.
+
+/********************  Speed  ********************/
+
 defineUnit('m/s', 'meter per second', 'meters per second', 'm/s', 1);
 defineSiPrefixedUnits('_m/s', '_meter per second', '_meters per second', [], [
   '_meter/second', '_meters/second', '_metre per second', '_metres per second', '_metre/second',
@@ -167,7 +175,9 @@ defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
 defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
 defineUnit('C', 'time the speed of light', 'times the speed of light', 'm/s', 299792458);
-// Area.
+
+/********************  Area  ********************/
+
 defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
   'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
   'meters squared', 'm2'
@@ -195,7 +205,9 @@ defineUnit('yd\u00B2', 'square yard', 'square yards', 'ft\u00B2', 3 * 3, [
   'yd squared', 'in2'
 ]);
 defineUnit('acres', 'acre', 'acres', 'ft\u00B2', 43560);
-// Volume.
+
+/********************  Volume  ********************/
+
 defineUnit('m\u00B3', 'cubic meter', 'cubic meters', 'm\u00B3', 1, [
   'cubic metre', 'cubic metres', 'meter cubic', 'meters cubic', 'meter cubed', 'meters cubed', 'm3'
 ]);
@@ -261,3 +273,19 @@ defineUnit('dry qt', 'dry quart', 'dry quarts', 'qt', 1.1636);
 defineUnit('dry gal', 'dry gallon', 'dry gallons', 'gal', 1.1636);
 defineUnit('pecks', 'peck', 'pecks', 'dry gal', 2);
 defineUnit('bsh', 'bushel', 'bushels', 'pecks', 4, ['bu']);
+
+/********************  Memory  ********************/
+
+defineUnit('b', 'bit', 'bits', 'b', 1);
+defineSiPrefixedUnits('_b', '_bit', '_bits', [], [], 1, 'DhkMGTPEZY');
+defineUnit('B', 'byte', 'bytes', 'b', 8);
+defineSiPrefixedUnits('_B', '_byte', '_bytes', [], [], 1, 'DhkMGTPEZY');
+aliasUnit('KiB', 'KB');
+defineUnit('KiB', 'kibibyte', 'kibibytes', 'B', Math.pow(1024, 1));
+defineUnit('MiB', 'mebibyte', 'mebibytes', 'B', Math.pow(1024, 2));
+defineUnit('GiB', 'gibibyte', 'gibibytes', 'B', Math.pow(1024, 3));
+defineUnit('TiB', 'tebibyte', 'tebibytes', 'B', Math.pow(1024, 4));
+defineUnit('PiB', 'pebibyte', 'pebibytes', 'B', Math.pow(1024, 5));
+defineUnit('EiB', 'exbibyte', 'exbibytes', 'B', Math.pow(1024, 6));
+defineUnit('ZiB', 'zebibyte', 'zebibytes', 'B', Math.pow(1024, 7));
+defineUnit('YiB', 'yobibyte', 'yobibytes', 'B', Math.pow(1024, 8));

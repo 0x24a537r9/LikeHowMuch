@@ -17,7 +17,9 @@ function defineKnownQuantity(quantity, unitShortName, description) {
 
 
 var KNOWN_QUANTITIES = {};
-// Length.
+
+/********************  Length  ********************/
+
 defineKnownQuantity(25, 'pm', '| times the radius of a hydrogen atom');
 defineKnownQuantity(1, 'nm', '| times the width of a carbon nanotube');
 defineKnownQuantity(90, 'nm', '| times the width of the HIV virus');
@@ -50,7 +52,9 @@ defineKnownQuantity(1000, 'ly', '| times the average thickness of the Milky Way 
 defineKnownQuantity(100000, 'ly', '| times the diameter of the Milky Way galaxy');
 defineKnownQuantity(2540000, 'ly', '| trips to the nearest spiral galaxy, the Andromeda Galaxy.');
 defineKnownQuantity(92000000000, 'ly', '| times the diameter of the observable universe');
-// Time.
+
+/********************  Time  ********************/
+
 defineKnownQuantity(12, 'as', '| times the shortest measured period of time');
 defineKnownQuantity(1, 'ns', '| machine cycles by a 1 GHz microprocessor');
 defineKnownQuantity(1.0167, 'ns', '| times the amount of time it takes light to travel a foot');
@@ -62,7 +66,9 @@ defineKnownQuantity(4000000000, 'y', '| times the age of life on Earth');
 defineKnownQuantity(143, 'Ps', '| times the age of Earth');
 defineKnownQuantity(144, 'Ps', '| times the age of the Solar System');
 defineKnownQuantity(430, 'Ps', '| times the age of the Universe');
-// Mass/Weight.
+
+/********************  Mass / Weight  ********************/
+
 defineKnownQuantity(9.11e-31, 'kg', '| electrons');
 defineKnownQuantity(1.673e-27, 'kg', '| protons');
 defineKnownQuantity(1.674e-27, 'kg', '| hydrogen atoms');
@@ -99,13 +105,43 @@ defineKnownQuantity(7.8e6, 'kg', '| Virginia-class nuclear submarines');
 defineKnownQuantity(5.2e7, 'kg', '| RMS Titanics');
 defineKnownQuantity(6e9, 'kg', '| Great Pyramids of Giza');
 defineKnownQuantity(4e11, 'kg', '| times the total biomass of the human population');
-// Speed/Velocity.
+
+/********************  Speed  ********************/
+
 defineKnownQuantity(5, 'km/h', '| times the average human walking speed');
-// Area.
+
+/********************  Area  ********************/
+
 defineKnownQuantity(1, 'cm2', '| fingernails');
-// Volume.
+
+/********************  Volume  ********************/
+
 defineKnownQuantity(60, 'mm\u00B3', '| large raindrops')
 defineKnownQuantity(1, 'cup', '| cups of coffee')
+
+/********************  Memory  ********************/
+
+defineKnownQuantity(1, 'B', '| ASCII letters');
+defineKnownQuantity(4, 'KB', '| Apple II RAMs');
+defineKnownQuantity(1440, 'kB', '| 3.5" floppy disks');
+defineKnownQuantity(3, 'MB', '| 10 megapixel photos');
+defineKnownQuantity(3.5, 'MB', '| mp3s');
+defineKnownQuantity(10, 'MB', '| 1985-er consumer hard drives');
+defineKnownQuantity(750, 'MB', '| CDs');
+defineKnownQuantity(800, 'MB', '| human genomes');
+defineKnownQuantity(1 / 7, 'GB', '| minutes of HDTV video');
+defineKnownQuantity(4, 'GB', '| DVD movies');
+defineKnownQuantity(10, 'GB', '| 2000-era consumer hard drives');
+defineKnownQuantity(25, 'GB', '| single-layer Blue-ray Discs');
+defineKnownQuantity(5.87, 'TB', '| times the size of Wikipedia in January 2010');
+defineKnownQuantity(10, 'TB', '| times the amount of printed data in the Library of Congress');
+defineKnownQuantity(45, 'TB', '| times the amount of data the Hubble Space Telescope collected ' +
+                              'in its first 20 years of observation');
+defineKnownQuantity(100, 'TB', '| times the amount of total Internet traffic in 1993');
+defineKnownQuantity(24, 'PB', '| times the amount of data Google processed per day in 2009');
+defineKnownQuantity(8, 'EB', '| Utah NSA data centers');
+defineKnownQuantity(15, 'EB', '| times the entire data capacity of Google in 2013');
+defineKnownQuantity(4, 'ZB', '| times the size of the entire World Wide Web in 2013');
 
 
 // Sort the quantities.
