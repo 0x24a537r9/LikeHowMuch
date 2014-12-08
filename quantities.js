@@ -112,7 +112,20 @@ defineKnownQuantity(5, 'km/h', '| times the average human walking speed');
 
 /********************  Area  ********************/
 
+defineKnownQuantity(1.767, 'mm2', '| heads of a pin');
+defineKnownQuantity(252, 'mm2', '| dimes');
+defineKnownQuantity(2500, 'mm2', '| monarch butterfly wings');
 defineKnownQuantity(1, 'cm2', '| fingernails');
+defineKnownQuantity(14.7, 'in2', '| Polaroid pictures');
+defineKnownQuantity(63.617, 'in2', '| dinner plates');
+defineKnownQuantity(4350, 'in2', '| 12\' long cafeteria tables');
+defineKnownQuantity(0.5, 'm2', '| A1 sheets of paper');
+defineKnownQuantity(57600, 'ft2', '| American football fields');
+defineKnownQuantity(7140, 'm2', '| soccer pitches');
+defineKnownQuantity(696241, 'km2', '| Texases');
+defineKnownQuantity(7692000, 'km2', '| Australias');
+defineKnownQuantity(9597000, 'km2', '| Chinas');
+defineKnownQuantity(30220000, 'km2', '| Africas');
 
 /********************  Volume  ********************/
 
