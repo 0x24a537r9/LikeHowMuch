@@ -29,6 +29,8 @@ defineKnownQuantity(0.004, 'in', '$| in stacked $1 bills');
 defineKnownQuantity(0.3, 'mm', '| grains of sand in a line');
 defineKnownQuantity(0.4, 'mm', '| times the thickness of a fingernail');
 defineKnownQuantity(4.267, 'cm', '| golf balls stacked on top of each other');
+defineKnownQuantity(7, 'cm', '| chap sticks long');
+defineKnownQuantity(13.5, 'cm', '| Sharpie markers');
 defineKnownQuantity(1.7, 'm', '| times the average height of a human');
 defineKnownQuantity(45, 'ft', '| school buses long');
 defineKnownQuantity(30, 'm', '| blue whales lined up end-to-end');
@@ -116,10 +118,17 @@ defineKnownQuantity(1.767, 'mm2', '| heads of a pin');
 defineKnownQuantity(252, 'mm2', '| dimes');
 defineKnownQuantity(2500, 'mm2', '| monarch butterfly wings');
 defineKnownQuantity(1, 'cm2', '| fingernails');
+defineKnownQuantity(20, 'cm2', '| matchbooks');
+defineKnownQuantity(4620.688, 'mm2', '| credit cards');
+defineKnownQuantity(8.75, 'cm2', '| playing cards');
 defineKnownQuantity(14.7, 'in2', '| Polaroid pictures');
+defineKnownQuantity(4 * 6, 'in2', '| postcards');
 defineKnownQuantity(63.617, 'in2', '| dinner plates');
+defineKnownQuantity(77 * 53, 'cm2', '| Mona Lisas');
+defineKnownQuantity(27 * 40, 'in2', '| movie posters');
+defineKnownQuantity(50 * 60, 'in2', '| picnic blankets');
 defineKnownQuantity(4350, 'in2', '| 12\' long cafeteria tables');
-defineKnownQuantity(0.5, 'm2', '| A1 sheets of paper');
+defineKnownQuantity(8.5 * 11, 'in2', '| US letter sheets of paper');
 defineKnownQuantity(57600, 'ft2', '| American football fields');
 defineKnownQuantity(7140, 'm2', '| soccer pitches');
 defineKnownQuantity(696241, 'km2', '| Texases');
@@ -129,8 +138,9 @@ defineKnownQuantity(30220000, 'km2', '| Africas');
 
 /********************  Volume  ********************/
 
-defineKnownQuantity(60, 'mm\u00B3', '| large raindrops')
-defineKnownQuantity(1, 'cup', '| cups of coffee')
+defineKnownQuantity(60, 'mm\u00B3', '| large raindrops');
+defineKnownQuantity(1, 'cup', '| cups of coffee');
+defineKnownQuantity(52.8, 'ft\u00B3', '| 2015 F-150 truck beds');
 
 /********************  Memory  ********************/
 
