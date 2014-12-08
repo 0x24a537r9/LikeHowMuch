@@ -59,7 +59,7 @@ function defineSiPrefixedUnits(shortName, singularLongName, pluralLongName, opt_
 
     for (var j = 0; j < opt_altShortNames.length; ++j) {
       aliasUnit(shortName.replace('_', prefix.shortName),
-                opt_altShortNames[j].replace('_', prefix.shortName));
+                opt_altShortNames[j].replace(/\s+/g, '').replace('_', prefix.shortName));
       if (prefix.altShortName) {
         aliasUnit(prefix.shortName + unit.shortName, prefix.altShortName + unit.shortName);
       }
