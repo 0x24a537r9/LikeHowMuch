@@ -244,7 +244,9 @@ defineUnit('pinches', 'pinch', 'pinches', 'tsp', 1 / 16);
 defineUnit('dashes', 'dash', 'dashes', 'tsp', 1 / 8);
 defineUnit('tsp', 'teaspoon', 'teaspoons', 'm\u00B3', 4.92892e-6);
 defineUnit('dstspn', 'dessertspoon', 'dessertspoons', 'tsp', 2);
-defineUnit('tbsp', 'tablespoon', 'tablespoons', 'tsp', 3, ['tbl']);
+defineUnit('tbsp', 'tablespoon', 'tablespoons', 'tsp', 3, [
+  'tbl', 'tblsp', 'tablesp', 'tablsp', 'tbspoon', 'tblspoon'
+]);
 defineUnit('fl oz', 'fluid ounce', 'fluid ounces', 'tsp', 6, ['oz fl']);
 defineUnit('fl dr', 'fluid dram', 'fluid drams', 'fl oz', 1 / 8, [
   'fluid drachm', 'fluid drachms', 'fluidram', 'fluidrams', 'fluidrachm', 'fluidrachms', 'f3'
