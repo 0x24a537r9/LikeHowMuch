@@ -64,7 +64,7 @@ defineKnownQuantity(1, 'ms', '| sequential human nueral firings');
 defineKnownQuantity(350, 'ms', '| blinks of an eye');
 defineKnownQuantity(1 / 17, 's', '| resting canary heartbeats');
 defineKnownQuantity(60 / 80, 's', '| resting human heartbeats');
-defineKnownQuantity(5.25, 's', '| world-record Rubik's cube solutions);
+defineKnownQuantity(5.25, 's', '| world-record Rubik\'s cube solutions');
 defineKnownQuantity(9.58, 's', '| world-record 100m dashes');
 defineKnownQuantity(30, 'min', '| lunch breaks');
 defineKnownQuantity(1, 'hr', '| episodes of Game of Thrones');
