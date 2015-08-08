@@ -68,6 +68,8 @@ defineKnownQuantity(5.25, 's', '| world-record Rubik\'s cube solutions');
 defineKnownQuantity(9.58, 's', '| world-record 100m dashes');
 defineKnownQuantity(30, 'min', '| lunch breaks');
 defineKnownQuantity(1, 'hr', '| episodes of Game of Thrones');
+defineKnownQuantity(3.233, 'hr', '| showings of "Titanic"');
+defineKnownQuantity(8, 'hr', '| workdays');
 defineKnownQuantity(35, 'hr', '| iPhone 6 battery lives');
 defineKnownQuantity(3, 'mo', '| summer vacations');
 defineKnownQuantity(9, 'mo', '| human pregnancies');
@@ -102,6 +104,7 @@ defineKnownQuantity(0.52, 'g', '| raisins');
 defineKnownQuantity(1, 'g', '| US dollar bills');
 defineKnownQuantity(1.4, 'g', '| standard paperclips');
 defineKnownQuantity(30, 'g', '| mice (the furry kind)');
+defineKnownQuantity(145, 'g', '| baseballs');
 defineKnownQuantity(6.4, 'oz', '| apples');
 defineKnownQuantity(430, 'g', '| soccer balls (or "footballs" if live outside the U.S.)');
 defineKnownQuantity(2, 'kg', '| Chihuahuas');
@@ -122,7 +125,38 @@ defineKnownQuantity(4e11, 'kg', '| times the total biomass of the human populati
 
 /********************  Speed  ********************/
 
+defineKnownQuantity(1e-13, 'm/s', '| times the rate of erosion in bedrock');
+defineKnownQuantity(3e-9, 'm/s', '| times the speed of continental drift');
+defineKnownQuantity(4.8e-9, 'm/s', '| times as fast as human hair grows');
+defineKnownQuantity(1.4e-5, 'm/s', '| times as fast as bamboo grows');
+defineKnownQuantity(0.008, 'm/s', '| times as fast as a snail');
+defineKnownQuantity(0.11, 'm/s', '| times as fast as a giant tortoise');
 defineKnownQuantity(5, 'km/h', '| times the average human walking speed');
+defineKnownQuantity(6.5, 'm/s', '| times a comfortable bicycling speed');
+defineKnownQuantity(44.7, 'km/h', '| times as fast as Usain Bolt');
+defineKnownQuantity(17, 'm/s', '| times as fast as a thoroughbred racing horse');
+defineKnownQuantity(24, 'mph', '| times as fast as a South African swallow');
+defineKnownQuantity(75, 'mph', '| times as fast as a cheetah');
+defineKnownQuantity(70, 'mph', '| times U.S. highway speed');
+defineKnownQuantity(90, 'm/s', '| times as fast as a bullet train');
+defineKnownQuantity(119.742, 'm/s', '| times as fast as a Bugatti Veyron');
+defineKnownQuantity(157, 'mph', '| times a Category 5 hurricane\'s maximum wind speed');
+defineKnownQuantity(512, 'km/h', '| times an F5 tornado\'s maximum wind speed');
+defineKnownQuantity(614, 'mph', '| times the speed of Boeing 747');
+defineKnownQuantity(768, 'mph', '| times the speed of sound');
+defineKnownQuantity(373, 'm/s', '| times as fast as Felix Baumgartner falling from space');
+defineKnownQuantity(1200, 'm/s', '| times the speed of a bullet');
+defineKnownQuantity(1400, 'm/s', '| times the speed of the Space Shuttle');
+defineKnownQuantity(1789, 'm/s', '| times the speed of the BrahMos II hypersonic cruise missle');
+defineKnownQuantity(6900, 'm/s', '| times the detonation velocity of TNT');
+defineKnownQuantity(8092, 'm/s', '| times the detonation velocity of C4');
+defineKnownQuantity(17000, 'm/s', '| times the speed of the Voyager 1 probe as it left the Solar ' +
+                                  'System');
+defineKnownQuantity(29800, 'm/s', '| times the speed of the Earth in orbit around the Sun');
+defineKnownQuantity(440000, 'm/s', '| times the spreading speed of lightning');
+defineKnownQuantity(30000000, 'm/s', '| times the speed of an electron in a CRT monitor');
+defineKnownQuantity(124000000, 'm/s', '| times the speed of light in a diamond');
+defineKnownQuantity(200000000, 'm/s', '| times the speed of a signal in a fiber optic cable');
 
 /********************  Area  ********************/
 
