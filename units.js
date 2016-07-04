@@ -198,11 +198,11 @@ defineUnit('in\u00B2', 'square inch', 'square inches', 'ft\u00B2', 1 / (12 * 12)
 ]);
 defineUnit('mi\u00B2', 'square mile', 'square miles', 'ft\u00B2', 5280 * 5280, [
   'sq mi', 'square mi', 'mile square', 'miles square', 'mi square', 'mile squared', 'miles squared',
-  'mi squared', 'in2'
+  'mi squared', 'mi2'
 ]);
 defineUnit('yd\u00B2', 'square yard', 'square yards', 'ft\u00B2', 3 * 3, [
   'sq yd', 'square yd', 'yard square', 'yards square', 'yd square', 'yard squared', 'yards squared',
-  'yd squared', 'in2'
+  'yd squared', 'yd2'
 ]);
 defineUnit('acres', 'acre', 'acres', 'ft\u00B2', 43560);
 
@@ -225,19 +225,19 @@ defineUnit('L', 'liter', 'liters', 'm\u00B3', 0.001, ['l', 'litre', 'litres']);
 defineSiPrefixedUnits('_L', '_liter', '_liters', ['_l'], ['_litre', '_litres']);
 defineUnit('ft\u00B3', 'cubic foot', 'cubic feet', 'm\u00B3', 0.0283168, [
   'sq ft', 'cubic ft', 'foot cubic', 'feet cubic', 'ft cubic', 'foot cubed', 'feet cubed',
-  'ft cubed', 'ft2'
+  'ft cubed', 'ft3'
 ]);
 defineUnit('in\u00B3', 'cubic inch', 'cubic inches', 'ft\u00B3', 1 / (12 * 12 * 12), [
   'sq in', 'cubic in', 'inch cubic', 'inches cubic', 'in cubic', 'inch cubed', 'inches cubed',
-  'in cubed', 'in2'
+  'in cubed', 'in3'
 ]);
 defineUnit('mi\u00B3', 'cubic mile', 'cubic miles', 'ft\u00B3', 5280 * 5280 * 5280, [
   'sq mi', 'cubic mi', 'mile cubic', 'miles cubic', 'mi cubic', 'mile cubed', 'miles cubed',
-  'mi cubed', 'in2'
+  'mi cubed', 'mi3'
 ]);
 defineUnit('yd\u00B3', 'cubic yard', 'cubic yards', 'ft\u00B3', 3 * 3 * 3, [
   'sq yd', 'cubic yd', 'yard cubic', 'yards cubic', 'yd cubic', 'yard cubed', 'yards cubed',
-  'yd cubed', 'in2'
+  'yd cubed', 'yd3'
 ]);
 defineUnit('smidgens', 'smidgen', 'smidgens', 'tsp', 1 / 32);
 defineUnit('pinches', 'pinch', 'pinches', 'tsp', 1 / 16);
