@@ -173,7 +173,7 @@ defineUnit('M', 'Mach', 'Mach', 'm/s', 340.29, ['Ma', 'mach']);
 defineUnit('kn', 'knot', 'knots', 'km/h', 1.852, ['kt', 'NMPH']);
 defineUnit('mph', 'mile per hour', 'miles per hour', 'm/s', 0.44704, ['mi/h']);
 defineUnit('ft/s', 'foot per second', 'feet per second', 'mph', 15 / 22, ['fps']);
-defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['fps']);
+defineUnit('in/s', 'inch per second', 'inches per second', 'ft/s', 1 / 12, ['ips']);
 defineUnit('C', 'time the speed of light', 'times the speed of light', 'm/s', 299792458);
 
 /********************  Area  ********************/
@@ -209,9 +209,10 @@ defineUnit('acres', 'acre', 'acres', 'ft\u00B2', 43560);
 /********************  Volume  ********************/
 
 defineUnit('m\u00B3', 'cubic meter', 'cubic meters', 'm\u00B3', 1, [
-  'cubic metre', 'cubic metres', 'meter cubic', 'meters cubic', 'meter cubed', 'meters cubed', 'm3'
+  'cubic metre', 'cubic metres', 'meter cubic', 'meters cubic', 'meter cubed', 'meters cubed', 'm3',
+  'cu m'
 ]);
-defineSiPrefixedUnits('_m\u00B3', 'cubic _meter', 'cubic _meters', ['_m3'], [
+defineSiPrefixedUnits('_m\u00B3', 'cubic _meter', 'cubic _meters', ['_m3', 'cu _m'], [
   '_meter cubic', '_meters cubic', '_meter cubed', '_meters cubed', '_meter3', '_meters3',
   'cubic _metre', 'cubic _metres', '_metre cubic', '_metres cubic', '_metre cubed', '_metres cubed',
   '_metre3', '_metres3'
@@ -225,11 +226,11 @@ defineUnit('L', 'liter', 'liters', 'm\u00B3', 0.001, ['l', 'litre', 'litres']);
 defineSiPrefixedUnits('_L', '_liter', '_liters', ['_l'], ['_litre', '_litres']);
 defineUnit('ft\u00B3', 'cubic foot', 'cubic feet', 'm\u00B3', 0.0283168, [
   'sq ft', 'cubic ft', 'foot cubic', 'feet cubic', 'ft cubic', 'foot cubed', 'feet cubed',
-  'ft cubed', 'ft3'
+  'ft cubed', 'ft3', 'cu ft'
 ]);
 defineUnit('in\u00B3', 'cubic inch', 'cubic inches', 'ft\u00B3', 1 / (12 * 12 * 12), [
   'sq in', 'cubic in', 'inch cubic', 'inches cubic', 'in cubic', 'inch cubed', 'inches cubed',
-  'in cubed', 'in3'
+  'in cubed', 'in3', 'cu in'
 ]);
 defineUnit('mi\u00B3', 'cubic mile', 'cubic miles', 'ft\u00B3', 5280 * 5280 * 5280, [
   'sq mi', 'cubic mi', 'mile cubic', 'miles cubic', 'mi cubic', 'mile cubed', 'miles cubed',
@@ -237,7 +238,7 @@ defineUnit('mi\u00B3', 'cubic mile', 'cubic miles', 'ft\u00B3', 5280 * 5280 * 52
 ]);
 defineUnit('yd\u00B3', 'cubic yard', 'cubic yards', 'ft\u00B3', 3 * 3 * 3, [
   'sq yd', 'cubic yd', 'yard cubic', 'yards cubic', 'yd cubic', 'yard cubed', 'yards cubed',
-  'yd cubed', 'yd3'
+  'yd cubed', 'yd3', 'cu yd'
 ]);
 defineUnit('smidgens', 'smidgen', 'smidgens', 'tsp', 1 / 32);
 defineUnit('pinches', 'pinch', 'pinches', 'tsp', 1 / 16);
@@ -278,19 +279,25 @@ defineUnit('bsh', 'bushel', 'bushels', 'pecks', 4, ['bu']);
 
 /********************  Memory  ********************/
 
-defineUnit('b', 'bit', 'bits', 'b', 1);
-defineSiPrefixedUnits('_b', '_bit', '_bits', [], [], 1, 'DhkMGTPEZY');
-defineUnit('B', 'byte', 'bytes', 'b', 8);
-defineSiPrefixedUnits('_B', '_byte', '_bytes', [], [], 1, 'DhkMGTPEZY');
-aliasUnit('KiB', 'KB');
-defineUnit('KiB', 'kibibyte', 'kibibytes', 'B', Math.pow(1024, 1));
-defineUnit('MiB', 'mebibyte', 'mebibytes', 'B', Math.pow(1024, 2));
-defineUnit('GiB', 'gibibyte', 'gibibytes', 'B', Math.pow(1024, 3));
-defineUnit('TiB', 'tebibyte', 'tebibytes', 'B', Math.pow(1024, 4));
-defineUnit('PiB', 'pebibyte', 'pebibytes', 'B', Math.pow(1024, 5));
-defineUnit('EiB', 'exbibyte', 'exbibytes', 'B', Math.pow(1024, 6));
-defineUnit('ZiB', 'zebibyte', 'zebibytes', 'B', Math.pow(1024, 7));
-defineUnit('YiB', 'yobibyte', 'yobibytes', 'B', Math.pow(1024, 8));
+// Note: Technically a lowercase 'b' should signify bits, with an uppercase 'B'
+// reserved for bytes. But since most quantities the average Joe will encounter
+// in his daily life are in measured in bytes rather than bits, and most people
+// don't know or care about proper capitalization with SI prefixes and units, we
+// assume the user actually means bytes. Usability > pedantry.
+defineUnit('b', 'byte', 'bytes', 'b', 1, ['B']);
+defineSiPrefixedUnits('_b', '_byte', '_bytes', ['_B'], [], 1, 'DhkMGTPEZY');
+aliasUnit('Mb', 'mb');  // Commmon mistake.
+aliasUnit('Gb', 'gb');  // Commmon mistake.
+aliasUnit('Tb', 'tb');  // Commmon mistake.
+aliasUnit('Pb', 'pb');  // Commmon mistake.
+defineUnit('KiB', 'kibibyte', 'kibibytes', 'b', Math.pow(1024, 1));
+defineUnit('MiB', 'mebibyte', 'mebibytes', 'b', Math.pow(1024, 2));
+defineUnit('GiB', 'gibibyte', 'gibibytes', 'b', Math.pow(1024, 3));
+defineUnit('TiB', 'tebibyte', 'tebibytes', 'b', Math.pow(1024, 4));
+defineUnit('PiB', 'pebibyte', 'pebibytes', 'b', Math.pow(1024, 5));
+defineUnit('EiB', 'exbibyte', 'exbibytes', 'b', Math.pow(1024, 6));
+defineUnit('ZiB', 'zebibyte', 'zebibytes', 'b', Math.pow(1024, 7));
+defineUnit('YiB', 'yobibyte', 'yobibytes', 'b', Math.pow(1024, 8));
 
 /********************  Currency  ********************/
 
