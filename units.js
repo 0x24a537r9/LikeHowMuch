@@ -182,7 +182,9 @@ defineUnit('m\u00B2', 'square meter', 'square meters', 'm\u00B2', 1, [
   'square metre', 'square metres', 'meter square', 'meters square', 'meter squared',
   'meters squared', 'm2'
 ]);
-defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', ['_m2'], [
+defineSiPrefixedUnits('_m\u00B2', 'square _meter', 'square _meters', [
+  '_m2', 'square _m', '_m square', '_m squared'
+], [
   '_meter square', '_meters square', '_meter squared', '_meters squared', '_meter2', '_meters2',
   'square _metre', 'square _metres', '_metre square', '_metres square', '_metre squared',
   '_metres squared', '_metre2', '_metres2'

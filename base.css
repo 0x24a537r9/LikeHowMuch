@@ -72,7 +72,7 @@ body {
 .placeholder-container {
   color: #aaa;
   font-size: 18px;
-  height: 2500%;
+  height: 2000%;
   position: absolute;
   text-align: left;
   transition: -webkit-transform 300ms, transform 300ms, opacity 300ms;
@@ -83,7 +83,7 @@ body {
 }
 
 .placeholder-container li {
-  height: 4%;
+  height: 5%;
   line-height: 44px;
 }
 
