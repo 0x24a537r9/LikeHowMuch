@@ -284,3 +284,17 @@ body {
   text-shadow: #000 0px 3px 10px, rgba(0, 0, 0, 0.3) 0px 0px 30px;
   top: 50px;
 }
+
+.fork-me-banner {
+  border: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 300ms;
+  z-index: -1;
+}
+
+.show-results .fork-me-banner {
+  opacity: 0;
+  pointer-events: none;
+}
