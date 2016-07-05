@@ -28,7 +28,7 @@ defineKnownQuantity(100, 'um', '| \xD7 the width of a human hair');
 defineKnownQuantity(0.004, 'in', '$| in stacked $1 bills');
 defineKnownQuantity(0.3, 'mm', '| grains of sand in a line');
 defineKnownQuantity(0.4, 'mm', '| \xD7 the thickness of a fingernail');
-defineKnownQuantity(4.2169, 'mm', '| \xD7 the height of an L in 12pt Arial font');
+defineKnownQuantity(4.2169, 'mm', '| \xD7 the height of an "L" in 12pt Arial font');
 defineKnownQuantity(17.91, 'mm', '| U.S. dimes long');
 defineKnownQuantity(0.75, 'in', '| U.S. pennies long');
 defineKnownQuantity(0.955, 'in', '| U.S. quarters long');
@@ -208,7 +208,7 @@ defineKnownQuantity(200000000, 'm/s', '| \xD7 the speed of a signal in a fiber o
 /********************  Area  ********************/
 
 defineKnownQuantity(0.078 * 0.078, 'mm2', '| iPhone 6 pixels');
-defineKnownQuantity(0.25, 'mm2', '| periods in 12pt Arial font');
+defineKnownQuantity(0.25, 'mm2', '| "."s in 12pt Arial font');
 defineKnownQuantity(2.25, 'mm2', '| small freckles');
 defineKnownQuantity(1.767, 'mm2', '| heads of a pin');
 defineKnownQuantity(3.5 * 2, 'mm2', '| sesame seeds');
