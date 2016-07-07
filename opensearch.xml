@@ -1,0 +1,12 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Like How Much?</ShortName>
+  <Description>
+    Convert raw measurements to easy-to-understand everyday units! Learn that 18 mg = 4.9 sesame seeds, 5 in. = 0.94 Sharpies, and much more.
+  </Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">favicon.ico</Image>
+  <Url type="text/html" method="get" template="http://likehowmuch.com/#search={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="http://likehowmuch.com/opensearch.xml"/>
+  <moz:SearchForm>http://likehowmuch.com/</moz:SearchForm>
+</OpenSearchDescription>

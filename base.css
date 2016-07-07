@@ -78,7 +78,8 @@ body {
   transition: -webkit-transform 300ms, transform 300ms, opacity 300ms;
 }
 
-.placeholder-container.hidden {
+.placeholder-container.had-focus,
+.show-results .placeholder-container {
   opacity: 0;
 }
 

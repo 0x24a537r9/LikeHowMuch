@@ -39,6 +39,7 @@
     <meta name="msapplication-wide310x150logo" content="http://likehowmuch.com/favicons/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="http://likehowmuch.com/favicons/mstile-310x310.png" />
     <!-- Code -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Like How Much?" href="opensearch.xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <link href='//fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     <link href="reset.css" rel="stylesheet" type="text/css">
@@ -77,7 +78,7 @@
           <li>14 microseconds
           <li>$43,000,000
           <li>500 bushels
-          <li>0.2 light years
+          <li>0.02 light years
           <li>12 parsecs
           <li>83 mL
           <li>1,804,000 metric tons
@@ -124,7 +125,7 @@
       setTimeout(handlePlaceholderTimerTick, 0);
       $('.query-input').focus(function() {
         clearInterval(placeholderTimer);
-        $('.placeholder-container').addClass('hidden');
+        $('.placeholder-container').addClass('had-focus');
       });
 
       var resizeTimeout;
@@ -132,6 +133,8 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(fitResults, 50);
       });
+
+      $(window).on('hashchange', handleHashChange).trigger('hashchange');
     });
 
 
@@ -152,22 +155,33 @@
       $('.query-input').blur();
       $('.query-input, .query-button').prop('disabled', true);
 
-      try {
-        var standardizedQuery = parseAndStandardize(query);
-        if (ga != null) {
-          ga('send', 'event', 'input', 'query', standardizedQuery[3].shortName);
-        }
+      history.pushState(null, null, '#search=' + encodeURIComponent(query));
+      handleHashChange();
+    }
 
-        $('.interpretation .quantity').text(formatQuantity(standardizedQuery[0]));
-        $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
-                                        standardizedQuery[1].singularLongName :
-                                        standardizedQuery[1].pluralLongName);
+    function handleHashChange() {
+      var hashComponents = /^#search=(.*)$/.exec(window.location.hash);
+      if (hashComponents) {
+        var query = decodeURIComponent(hashComponents[1]);
+        $('.query-input').val(query);
 
-        convertAndRender.apply(null, standardizedQuery);
-      } catch (e) {
-        showBannerMessage(e.message);
-        if (ga != null) {
-          ga('send', 'event', 'input', 'error', query);
+        try {
+          var standardizedQuery = parseAndStandardize(query);
+          if (ga != null) {
+            ga('send', 'event', 'input', 'query', standardizedQuery[3].shortName);
+          }
+
+          $('.interpretation .quantity').text(formatQuantity(standardizedQuery[0]));
+          $('.interpretation .unit').text(standardizedQuery[0] == 1 ?
+                                          standardizedQuery[1].singularLongName :
+                                          standardizedQuery[1].pluralLongName);
+
+          convertAndRender.apply(null, standardizedQuery);
+        } catch (e) {
+          showBannerMessage(e.message);
+          if (ga != null) {
+            ga('send', 'event', 'input', 'error', query);
+          }
         }
       }
 
