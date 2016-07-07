@@ -177,6 +177,7 @@
                                           standardizedQuery[1].pluralLongName);
 
           convertAndRender.apply(null, standardizedQuery);
+          isFirstQuery = false;
         } catch (e) {
           showBannerMessage(e.message);
           if (ga != null) {
@@ -186,8 +187,6 @@
       }
 
       $('.query-input, .query-button').prop('disabled', false);
-
-      isFirstQuery = false;
     }
 
 
